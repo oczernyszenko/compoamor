@@ -21,7 +21,7 @@
     body {
       background-color: #fdf9f6;
       font-family: 'Lato', sans-serif;
-      color: #223A5E; /* Biscay Bay color */
+      color: #223A5E;
       margin: 0;
       padding: 0;
     }
@@ -47,7 +47,7 @@
       background: rgba(0, 0, 0, 0.2);
       padding: 10px 20px;
       border-radius: 8px;
-      color: #223A5E; /* Biscay Bay color */
+      color: #223A5E;
       text-align: center;
     }
 
@@ -168,22 +168,7 @@
     #description {
       display: block !important; /* Ensure it's visible */
     }
-    
-    /* Styling for expandable text */
-    .expandable-text {
-      display: none;
-      margin-top: 20px;
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.6;
-      font-family: 'Lato', sans-serif;
-    }
 
-    .expand-button {
-      cursor: pointer;
-      color: #4285F4;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
@@ -236,11 +221,6 @@
         A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
         An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
       </p>
-
-      <p class="expand-button" onclick="toggleText()">Read more...</p>
-      <div id="expanded-description" class="expandable-text">
-        The villa's design and layout are exceptional, with attention to every detail, ensuring a high standard of living. With state-of-the-art facilities and stunning views, it offers a perfect balance of luxury, comfort, and style.
-      </div>
     </section>
 
     <div class="buttons">
@@ -256,20 +236,6 @@
   </main>
 
   <script>
-    // Function to toggle the expansion of the description text
-    function toggleText() {
-      var expandedText = document.getElementById("expanded-description");
-      var button = document.querySelector(".expand-button");
-
-      if (expandedText.style.display === "block") {
-        expandedText.style.display = "none";
-        button.innerHTML = "Read more...";
-      } else {
-        expandedText.style.display = "block";
-        button.innerHTML = "Read less...";
-      }
-    }
-
     // Language change function
     const translations = {
       "en": {
