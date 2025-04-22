@@ -44,6 +44,7 @@
     body {
       background-color: #fdf9f6;
       font-family: 'Lato', sans-serif;
+      text-align: center;
     }
     header {
       background-image: url('main-villa.jpg');
@@ -117,15 +118,36 @@
     .red { background-color: #FF0000; } /* YouTube */
     .green { background-color: #25D366; } /* WhatsApp */
     .blue { background-color: #4285F4; } /* Google */
+    .map iframe {
+      display: block;
+      margin: 40px auto;
+      border: none;
+    }
+    #language-selector {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #language-selector button {
+      padding: 10px;
+      margin: 5px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    #language-selector img {
+      width: 30px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
+
   <div id="language-selector">
     <button onclick="changeLanguage('en')">
-      <img src="flag-uk.png" alt="English" style="width: 30px; height: auto; margin-right: 5px;"> EN
+      <img src="flag-uk.png" alt="English"> EN
     </button>
     <button onclick="changeLanguage('es')">
-      <img src="flag-spain.png" alt="Spanish" style="width: 30px; height: auto; margin-right: 5px;"> ES
+      <img src="flag-spain.png" alt="Spanish"> ES
     </button>
   </div>
 
@@ -168,13 +190,14 @@
     </section>
 
     <div class="buttons">
-      <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i>Video</a>
-      <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+      <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
+      <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
-    
+
     <div class="map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.9586474666844!2d-0.7443483863104041!3d37.90802925223873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd630619c21eae9b%3A0x8a089c5dd77e0b0d!2sC.%20Ana%20Mar%C3%ADa%20Matute%2C%2003189%20Orihuela%2C%20Alicante!5e0!3m2!1sru!2ses!4v1745302309502!5m2!1sru!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
   </main>
 
   <script>
