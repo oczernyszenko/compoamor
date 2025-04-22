@@ -198,8 +198,9 @@
         This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
         Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
         The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
-        A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
-        An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
+        <span id="more-text" style="display:none;">A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
+        An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.</span><br><br>
+        <button onclick="toggleDescription()">Read more</button>
       </p>
     </section>
 
@@ -227,6 +228,18 @@
   </main>
 
   <script>
+    function toggleDescription() {
+      var moreText = document.getElementById("more-text");
+      var button = document.querySelector("button");
+      if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        button.innerHTML = "Read less";
+      } else {
+        moreText.style.display = "none";
+        button.innerHTML = "Read more";
+      }
+    }
+
     const translations = {
       "en": {
         "title": "Luxury Villa with Sea View in Campoamor",
