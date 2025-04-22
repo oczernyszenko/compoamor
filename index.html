@@ -138,6 +138,22 @@
       width: 30px;
       height: auto;
     }
+
+    /* Mobile Adaptation */
+    @media (max-width: 768px) {
+      .gallery img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    /* Tablet and Larger Screens */
+    @media (max-width: 1024px) {
+      .gallery {
+        justify-content: space-between;
+      }
+    }
   </style>
 </head>
 <body>
