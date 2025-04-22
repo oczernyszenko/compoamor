@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Розкішна сучасна вілла в Campoamor, Costa Blanca. Панорамний вид на море, 4 спальні, басейн, тераси, преміум-дизайн. Ідеально для життя та відпочинку.">
+  <meta name="keywords" content="вілла Campoamor, нерухомість Іспанія, Costa Blanca, купити віллу біля моря, елітна нерухомість, будинок з басейном Іспанія">
+  <meta name="author" content="A1Investments">
+  <meta property="og:title" content="Розкішна вілла в Campoamor, Costa Blanca">
+  <meta property="og:description" content="Унікальна сучасна вілла з видом на море, басейном та дизайнерським інтер'єром. Campoamor, Коста Бланка.">
+  <meta property="og:image" content="main-villa.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/villa-campoamor">
+  <meta name="robots" content="index, follow">
+  <title>Розкішна вілла в Campoamor, Costa Blanca</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #fdf9f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-image: url('main-villa.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+    .info {
+      padding: 40px;
+      text-align: center;
+    }
+    .language-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    .language-buttons button {
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 14px;
+      margin: 5px 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .language-buttons button img {
+      margin-right: 10px;
+    }
+    .language-buttons button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Розкішна вілла з видом на море в Campoamor</h1>
+  </header>
 
+  <section class="info">
+    <h2>Ціна та характеристики</h2>
+    <h3>€1,470,000</h3>
+    <p>📍 Campoamor, Costa Blanca</p>
+    <h3>🏡 Площа ділянки: 500 м²</h3>
+    <h3>🏠 Площа забудови: 320 м²</h3>
+    <h3>🏢 Житлова площа: 200 м²</h3>
+    <h3>🌊 Вид на море</h3>
+  </section>
+
+  <div class="language-buttons">
+    <button onclick="changeLanguage('uk')">
+      <img src="path/to/ukraine.png" alt="Ukrainian"> Українська
+    </button>
+    <button onclick="changeLanguage('en')">
+      <img src="path/to/united-kingdom.png" alt="English"> English
+    </button>
+    <button onclick="changeLanguage('pl')">
+      <img src="path/to/poland.png" alt="Polish"> Polski
+    </button>
+    <button onclick="changeLanguage('es')">
+      <img src="path/to/spain.png" alt="Spanish"> Español
+    </button>
+  </div>
+
+  <script>
+    const translations = {
+      "uk": {
+        "title": "Розкішна вілла з видом на море в Campoamor",
+        "price": "€1,470,000",
+        "location": "Campoamor, Costa Blanca",
+        "area": "Площа ділянки: 500 м²",
+        "livingArea": "Житлова площа: 200 м²",
+        "description": "Вілла, де мрії стають реальністю..."
+      },
+      "en": {
+        "title": "Luxury Villa with Sea View in Campoamor",
+        "price": "$1,470,000",
+        "location": "Campoamor, Costa Blanca",
+        "area": "Land Area: 500 m²",
+        "livingArea": "Living Area: 200 m²",
+        "description": "A villa where dreams come true..."
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelector("h1").innerHTML = translations[lang].title;
+      document.querySelector("h3:nth-of-type(1)").innerHTML = translations[lang].price;
+      document.querySelector("p").innerHTML = translations[lang].location;
+      document.querySelector("h3:nth-of-type(2)").innerHTML = translations[lang].area;
+      document.querySelector("h3:nth-of-type(3)").innerHTML = translations[lang].livingArea;
+      document.querySelector("h3:nth-of-type(4)").innerHTML = translations[lang].description;
+    }
+  </script>
+</body>
+</html>
