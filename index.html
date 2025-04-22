@@ -15,13 +15,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luxury Villa in Campoamor, Costa Blanca | Sea View, Pool, 4 Bedrooms</title>
   
-  <!-- Link to favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
-  
-  <!-- Link to external CSS (Font Awesome for icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <!-- Internal CSS -->
   <style>
     body {
       background-color: #fdf9f6;
@@ -174,16 +169,16 @@
   <!-- Language Selector -->
   <div id="language-selector">
     <button onclick="changeLanguage('en')">
-      <img src="flag-uk.png" alt="English" style="width: 30px; height: auto; margin-right: 5px;"> EN
+      <img src="flag-uk.png" alt="English" style="width: 30px; height: auto;"> 
     </button>
     <button onclick="changeLanguage('es')">
-      <img src="flag-spain.png" alt="Spanish" style="width: 30px; height: auto; margin-right: 5px;"> ES
+      <img src="flag-spain.png" alt="Spanish" style="width: 30px; height: auto;"> 
     </button>
   </div>
 
   <!-- Main Content -->
   <main>
-    <h1 id="main-title" style="text-align: center;">Luxury Villa with Sea View in Campoamor</h1> <!-- Title centered -->
+    <h1 id="main-title" style="text-align: center;">Luxury Villa with Sea View in Campoamor</h1>
     <div style="max-width: 1200px; margin: 40px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.2);">
       <img src="main-villa.jpg" alt="Main view of villa in Campoamor with sea view" style="width: 100%; height: auto; display: block;">
     </div>
@@ -258,6 +253,7 @@
     };
 
     function changeLanguage(lang) {
+      localStorage.setItem("language", lang);
       document.querySelector("#main-title").innerHTML = translations[lang].title;
       document.querySelector("#price-title").innerHTML = translations[lang]["price-title"];
       document.querySelector("#price").innerHTML = translations[lang].price;
@@ -268,6 +264,12 @@
       document.querySelector("#sea-view").innerHTML = translations[lang]["sea-view"];
       document.querySelector("#description").innerHTML = translations[lang].description;
     }
+
+    // Set language on page load based on saved language in localStorage
+    window.onload = () => {
+      const lang = localStorage.getItem("language") || "en"; // Default to English
+      changeLanguage(lang);
+    };
   </script>
 </body>
 </html>
