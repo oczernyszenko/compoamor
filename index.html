@@ -178,11 +178,15 @@
   min-width: 300px;
   max-width: 400px;
   scroll-snap-align: center;
-  background: #f9f9f9;
+  background: #fff9d6;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   flex-shrink: 0;
+  font-family: 'Segoe UI', cursive;
+  font-style: italic;
+  color: #003366;
+  border-left: 4px solid #ffc107;
 }
 
 @media (max-width: 600px) {
@@ -191,13 +195,28 @@
     padding: 16px;
   }
 }
-  </style>
+  .review-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 </head>
 <body>
   <div id="language-selector">
-    <button onclick="changeLanguage('en')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-uk.png" alt="EN"></button>
-    <button onclick="changeLanguage('es')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-spain.png" alt="ES"></button>
-    <button onclick="changeLanguage('ua')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-ua.png" alt="UA"></button>
+    <button onclick="changeLanguage('en')"><img src="flag-uk.jpg" alt="English" title="English"></button>
+    <button onclick="changeLanguage('es')"><img src="flag-spain.jpg" alt="Español" title="Español"></button>
+    <button onclick="changeLanguage('ua')"><img src="Pngtree—ukranian flag png_4069970.png" alt="Українська" title="Українська"></button>
   </div>
   <header>
     <video autoplay muted loop playsinline poster="images/main.jpg">
@@ -241,8 +260,8 @@
 </section>
 
   <section class="buttons">
-    <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
-    <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a class="red" id="videoBtn" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
+    <a class="green" id="whatsappBtn" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
   </section>
 
   <section class="map">
@@ -251,19 +270,19 @@
 
   <section class="form-section">
     <h2>Book a Viewing or Ask a Question</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message or Preferred Date" rows="4" required></textarea>
-      <button type="submit">Send Request</button>
-    </form>
+    <form id="contactForm">
+  <input type="text" id="contactName" placeholder="Your Name" required>
+  <input type="email" id="contactEmail" placeholder="Your Email" required>
+  <textarea id="contactMessage" placeholder="Your Message or Preferred Date" rows="4" required></textarea>
+  <button type="submit">Send Request</button>
+</form>
   </section>
 
   <section class="info">
     <h2>What Our Guests Say</h2>
     <div class="reviews">
       <div class="review-card">
-        <p><em>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</em></p>
+        <p style="color: #003366;"><em>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</em></p>
         <strong>— Anna, Germany</strong>
       </div>
       <div class="review-card">
@@ -396,11 +415,13 @@ Una joya arquitectónica en una de las zonas más prestigiosas de la costa espa�
       }
     };
     function changeLanguage(lang) {
+      document.getElementById("videoBtn").innerHTML = `<i class='fab fa-youtube'></i> ${lang === 'es' ? 'Vídeo' : lang === 'ua' ? 'Відео' : 'Video'}`;
+      document.getElementById("whatsappBtn").innerHTML = `<i class='fab fa-whatsapp'></i> ${lang === 'es' ? 'WhatsApp' : lang === 'ua' ? 'Ватсап' : 'WhatsApp'}`;
       document.querySelector(".form-section h2").innerHTML = translations[lang]["form-title"];
-      document.querySelector("form input[placeholder='Your Name']").placeholder = translations[lang]["form-name"];
-      document.querySelector("form input[placeholder='Your Email']").placeholder = translations[lang]["form-email"];
-      document.querySelector("form textarea[placeholder='Your Message or Preferred Date']").placeholder = translations[lang]["form-message"];
-      document.querySelector("form button[type='submit']").innerHTML = translations[lang]["form-button"];
+      document.getElementById("contactName").placeholder = translations[lang]["form-name"];
+      document.getElementById("contactEmail").placeholder = translations[lang]["form-email"];
+      document.getElementById("contactMessage").placeholder = translations[lang]["form-message"];
+      document.querySelector("#contactForm button").innerHTML = translations[lang]["form-button"];
 
       document.querySelector("#reviewForm").previousElementSibling.innerHTML = translations[lang]["review-title"];
       document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
@@ -470,6 +491,18 @@ Una joya arquitectónica en una de las zonas más prestigiosas de la costa espa�
     }
   }, 5000); // каждые 5 секунд
 });
-  </script>
+  // 👇 Contact Form Submission
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const message = document.getElementById("contactMessage").value.trim();
+
+      if (!name || !email || !message) return alert("Please fill in all fields.");
+
+      const mailto = `mailto:o.czernyszenko@gmail.com?subject=Villa Inquiry from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0AMessage: ${encodeURIComponent(message)}`;
+      window.location.href = mailto;
+    });
+</script>
 </body>
 </html>
