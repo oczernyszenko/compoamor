@@ -82,6 +82,9 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+    #reviewIndicators span {
+      cursor: pointer;
+    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -101,77 +104,141 @@
   </div>
 
   <section class="review-section">
+    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
+      <button id="prevReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">←</button>
+      <button id="nextReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">→</button>
+    </div>
     <h2>What Our Guests Say</h2>
     <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
-  <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%;">
-    <div class="review-card" style="flex: 0 0 100%;">
-      <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
-      <strong>— Emily & John</strong>
+      <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%; will-change: transform;">
+        <div class="review-card" style="flex: 0 0 100%; min-width: 100%; box-sizing: border-box;">
+          <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
+          <strong>— Emily & John</strong>
+        </div>
+      </div>
+      <div id="reviewIndicators" style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px;"></div>
     </div>
-  </div>
-</div>
-    </div>
-
     <form id="reviewForm" class="review-form">
       <input type="text" id="reviewName" placeholder="Your Name" required>
       <textarea id="reviewText" placeholder="Your Review" rows="4" required></textarea>
       <button type="submit">Submit Review</button>
     </form>
   </section>
-<script>
-  const translations = {
-    en: {
-      "reviews-title": "What Our Guests Say",
-      "review-name": "Your Name",
-      "review-text": "Your Review",
-      "review-button": "Submit Review"
-    },
-    es: {
-      "reviews-title": "Lo que dicen nuestros huéspedes",
-      "review-name": "Tu nombre",
-      "review-text": "Tu reseña",
-      "review-button": "Enviar reseña"
-    },
-    ua: {
-      "reviews-title": "Що кажуть наші гості",
-      "review-name": "Ваше ім’я",
-      "review-text": "Ваш відгук",
-      "review-button": "Надіслати відгук"
+  <script>
+    const translations = {
+      en: {
+        "reviews-title": "What Our Guests Say",
+        "review-name": "Your Name",
+        "review-text": "Your Review",
+        "review-button": "Submit Review"
+      },
+      es: {
+        "reviews-title": "Lo que dicen nuestros huéspedes",
+        "review-name": "Tu nombre",
+        "review-text": "Tu reseña",
+        "review-button": "Enviar reseña"
+      },
+      ua: {
+        "reviews-title": "Що кажуть наші гості",
+        "review-name": "Ваше ім’я",
+        "review-text": "Ваш відгук",
+        "review-button": "Надіслати відгук"
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelector(".review-section h2").textContent = translations[lang]["reviews-title"];
+      document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
+      document.getElementById("reviewText").placeholder = translations[lang]["review-text"];
+      document.querySelector("#reviewForm button").textContent = translations[lang]["review-button"];
     }
-  };
 
-  function changeLanguage(lang) {
-    document.querySelector(".review-section h2").textContent = translations[lang]["reviews-title"];
-    document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
-    document.getElementById("reviewText").placeholder = translations[lang]["review-text"];
-    document.querySelector("#reviewForm button").textContent = translations[lang]["review-button"];
-  }
+    let currentReviewIndex = 0;
+    let autoSlide;
+    function startAutoSlide() {
+      autoSlide = setInterval(() => {
+        const slider = document.querySelector('.review-slider');
+        const total = slider.children.length;
+        if (total > 1) {
+          currentReviewIndex = (currentReviewIndex + 1) % total;
+          slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
+        }
+      }, 6000);
+    }
 
-  document.getElementById("reviewForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const name = document.getElementById("reviewName").value.trim();
-    const message = document.getElementById("reviewText").value.trim();
+    function stopAutoSlide() {
+      clearInterval(autoSlide);
+    }
 
-    if (!name || !message) return alert("Please fill in all fields.");
+    startAutoSlide();
 
-    const container = document.getElementById("reviewsContainer");
-    const div = document.createElement("div");
-    div.className = "review-card";
-    div.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
-    container.prepend(div);
+    const reviewsContainer = document.getElementById("reviewsContainer");
+    reviewsContainer.addEventListener("mouseenter", stopAutoSlide);
+    reviewsContainer.addEventListener("mouseleave", startAutoSlide);
 
-    document.getElementById("reviewForm").reset();
-    alert("Thank you for your review!");
-  });
-let currentReviewIndex = 0;
-setInterval(() => {
-  const slider = document.querySelector('.review-slider');
-  const total = slider.children.length;
-  if (total > 1) {
-    currentReviewIndex = (currentReviewIndex + 1) % total;
-    slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-  }
-}, 6000);
-</script>
+    document.getElementById("prevReview").addEventListener("click", () => {
+      const slider = document.querySelector('.review-slider');
+      const total = slider.children.length;
+      currentReviewIndex = (currentReviewIndex - 1 + total) % total;
+      slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
+      updateIndicators();
+    });
+
+    document.getElementById("nextReview").addEventListener("click", () => {
+      const slider = document.querySelector('.review-slider');
+      const total = slider.children.length;
+      currentReviewIndex = (currentReviewIndex + 1) % total;
+      slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
+      updateIndicators();
+    });
+
+    document.getElementById("reviewForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("reviewName").value.trim();
+      const message = document.getElementById("reviewText").value.trim();
+
+      if (!name || !message) return alert("Please fill in all fields.");
+
+      const slider = document.querySelector('.review-slider');
+      const wrapper = document.createElement("div");
+      wrapper.className = "review-card";
+      wrapper.style.flex = "0 0 100%";
+      wrapper.style.minWidth = "100%";
+      wrapper.style.boxSizing = "border-box";
+      wrapper.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
+      slider.appendChild(wrapper);
+
+      document.getElementById("reviewForm").reset();
+      updateIndicators();
+      alert("Thank you for your review!");
+    });
+
+    function updateIndicators() {
+      const slider = document.querySelector('.review-slider');
+      const indicators = document.getElementById('reviewIndicators');
+      indicators.innerHTML = '';
+      [...slider.children].forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.style.width = '10px';
+        dot.style.height = '10px';
+        dot.style.borderRadius = '50%';
+        dot.style.background = index === currentReviewIndex ? '#ffc107' : '#ccc';
+        dot.style.display = 'inline-block';
+        dot.style.transition = 'background 0.3s ease';
+        dot.addEventListener('click', () => slideTo(index));
+        indicators.appendChild(dot);
+      });
+    }
+
+    function slideTo(index) {
+      const slider = document.querySelector('.review-slider');
+      currentReviewIndex = index;
+      slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
+      updateIndicators();
+    }
+
+    setInterval(updateIndicators, 6000);
+    updateIndicators();
+  </script>
 </body>
 </html>
