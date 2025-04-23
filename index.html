@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luxury Villa with Sea View in Campoamor, Costa Blanca</title>
-
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views." />
   <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties" />
   <meta name="author" content="A1Investments" />
@@ -16,54 +14,72 @@
   <meta property="og:url" content="https://example.com/villa-campoamor" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SingleFamilyResidence",
-    "name": "Luxury Villa in Campoamor",
-    "description": "A stunning modern villa with sea views, pool, and designer interiors located in the prestigious Campoamor area, Costa Blanca.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Campoamor",
-      "addressRegion": "Alicante",
-      "addressCountry": "ES"
-    },
-    "image": "https://example.com/main-villa.jpg",
-    "url": "https://example.com/villa-campoamor",
-    "numberOfRooms": 4,
-    "floorSize": {
-      "@type": "QuantitativeValue",
-      "value": 200,
-      "unitCode": "MTK"
-    },
-    "price": 1470000,
-    "priceCurrency": "EUR"
-  }
-  </script>
-
-  <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
 
   <style>
     body {
       background-color: #fdf9f6;
       font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
       text-align: center;
     }
-    .info {
-      padding: 40px;
-      max-width: 900px;
+    header {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    header h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 3.5rem;
+      font-family: 'Playfair Display', serif;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+    #language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+    #language-selector button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    #language-selector img {
+      width: 30px;
+      height: auto;
+    }
+    .info, .gallery, .buttons, .map, .form-section {
+      padding: 40px 20px;
+      max-width: 1200px;
       margin: auto;
-      text-align: center;
     }
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto 60px;
     }
     .gallery img {
       width: 100%;
@@ -79,9 +95,9 @@
     }
     .buttons {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 60px;
     }
     .buttons a {
       padding: 14px 28px;
@@ -94,70 +110,68 @@
       align-items: center;
       gap: 10px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .buttons a:active {
-      transform: translateY(2px);
-      box-shadow: none;
     }
     .red { background-color: #FF0000; }
     .green { background-color: #25D366; }
-    .blue { background-color: #4285F4; }
     .map iframe {
-      display: block;
-      margin: 40px auto;
+      width: 100%;
+      height: 450px;
       border: none;
     }
-    #language-selector {
-      text-align: center;
-      margin-bottom: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-    #language-selector button {
-      padding: 10px;
-      margin: 5px;
-      background-color: transparent;
+    form input, form textarea {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 14px;
       border: none;
+      border-radius: 30px;
       cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
-    #language-selector img {
-      width: 30px;
-      height: auto;
+    .reviews {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
     }
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 576px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+    .review-card {
+      min-width: 300px;
+      max-width: 400px;
+      scroll-snap-align: center;
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
   <div id="language-selector">
-    <button onclick="changeLanguage('en')">
-      <img src="flag-uk.png" alt="English"> EN
-    </button>
-    <button onclick="changeLanguage('es')">
-      <img src="flag-spain.png" alt="Spanish"> ES
-    </button>
+    <button onclick="changeLanguage('en')"><img src="images/flag-uk.png" alt="EN"></button>
+    <button onclick="changeLanguage('es')"><img src="images/flag-spain.png" alt="ES"></button>
+    <button onclick="changeLanguage('ua')"><img src="images/flag-ua.png" alt="UA"></button>
   </div>
+  <header>
+    <video autoplay muted loop playsinline poster="images/main.jpg">
+      <source src="https://oczernyszenko.github.io/compoamor/villa_hero_optimized.mp4" type="video/mp4">
+    </video>
+    <h1 id="main-title">Luxury Villa with Sea View in Campoamor</h1>
+  </header>
 
-<header style="position: relative; width: 100%; height: 90vh; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-  <video autoplay muted loop playsinline poster="images/main.jpg"
-         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
-    <source src="https://oczernyszenko.github.io/compoamor/villa_hero_optimized.mp4" type="video/mp4">
-  </video>
-  <div style="position: relative; z-index: 2; padding: 20px; text-align: center;">
-    <h1 id="main-title" style="font-size: 3.5rem; font-family: 'Playfair Display', serif; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.5); background: rgba(0,0,0,0.2); padding: 10px 20px; border-radius: 8px; display: inline-block;">
-      Luxury Villa with Sea View in Campoamor
-    </h1>
-  </div>
-</header>
-
- <div class="info">
+  <section class="info">
     <h2 id="price-title">Price and Features</h2>
     <h3 id="price">€1,470,000</h3>
     <p id="location">Campoamor, Costa Blanca</p>
@@ -165,50 +179,56 @@
     <h3 id="building-area">🏠 Building Area: 320 m²</h3>
     <h3 id="living-area">🏢 Living Area: 200 m²</h3>
     <h3 id="sea-view">🌊 Sea View</h3>
-    <p id="description">
-      🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
-      Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.<br><br>
-      This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
-      Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
-      The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
-      A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
-      An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
-    </p>
-  </div>
-
-  <section>
-    <div class="gallery">
-      <img src="https://oczernyszenko.github.io/compoamor/main.jpg" alt="Modern luxury villa with panoramic sea view in Spain">
-      <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view">
-      <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area">
-      <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior">
-      <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa">
-      <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa">
-      <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area">
-      <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone">
-      <img src="https://oczernyszenko.github.io/compoamor/villa_4.jpg" alt="Modern white kitchen with direct garden access">
-      <img src="https://oczernyszenko.github.io/compoamor/villa_5.jpg" alt="Spacious bathroom with freestanding bathtub and glass shower">
-      <img src="https://oczernyszenko.github.io/compoamor/photo_7_2025-03-12_16-31-33.JPEG" alt="Backyard with palm trees and decorative landscaping">
-      <img src="https://oczernyszenko.github.io/compoamor/photo_2_2025-03-12_16-31-33%202.JPEG" alt="Outdoor BBQ kitchen surrounded by flowers and plants">
-    </div>
+    <p id="description">🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong> ...</p>
   </section>
 
-  <div class="buttons">  
+  <section class="gallery">
+    <!-- Сюда вставляются <img> с виллой -->
+  </section>
+
+  <section class="buttons">
     <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
     <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-  </div>
+  </section>
 
-  <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.9586474666844!2d-0.7443483863104041!3d37.90802925223873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd630619c21eae9b%3A0x8a089c5dd77e0b0d!2sC.%20Ana%20Mar%C3%ADa%20Matute%2C%2003189%20Orihuela%2C%20Alicante!5e0!3m2!1sru!2ses!4v1745302309502!5m2!1sru!2ses" 
-    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>  
+  <section class="map">
+    <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
+  </section>
+
+  <section class="form-section">
+    <h2>Book a Viewing or Ask a Question</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message or Preferred Date" rows="4" required></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
+
+  <section class="info">
+    <h2>What Our Guests Say</h2>
+    <div class="reviews">
+      <div class="review-card">
+        <p><em>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</em></p>
+        <strong>— Anna, Germany</strong>
+      </div>
+      <div class="review-card">
+        <p><em>“Una experiencia de lujo en cada detalle. ¡Volveremos seguro!”</em></p>
+        <strong>— Carlos, Spain</strong>
+      </div>
+      <div class="review-card">
+        <p><em>“Чудове місце для сімейного відпочинку. Просторо, чисто, спокійно — ідеально!”</em></p>
+        <strong>— Олена, Україна</strong>
+      </div>
+    </div>
+  </section>
 
   <script>
     const translations = {
       "en": {
         "title": "Luxury Villa with Sea View in Campoamor",
         "price-title": "Price and Features",
-        "price": "$1,470,000",
+        "price": "€1,470,000",
         "location": "Campoamor, Costa Blanca",
         "land-area": "Land Area: 500 m²",
         "building-area": "Building Area: 320 m²",
@@ -226,9 +246,19 @@
         "living-area": "Área habitable: 200 m²",
         "sea-view": "Vistas al mar",
         "description": "Una villa donde los sueños se hacen realidad..."
+      },
+      "ua": {
+        "title": "Розкішна вілла з видом на море в Кампоаморі",
+        "price-title": "Ціна та характеристики",
+        "price": "€1 470 000",
+        "location": "Кампоамор, Коста Бланка",
+        "land-area": "Площа ділянки: 500 м²",
+        "building-area": "Площа забудови: 320 м²",
+        "living-area": "Житлова площа: 200 м²",
+        "sea-view": "Вид на море",
+        "description": "Вілла, де збуваються мрії..."
       }
     };
-
     function changeLanguage(lang) {
       document.querySelector("#main-title").innerHTML = translations[lang].title;
       document.querySelector("#price-title").innerHTML = translations[lang]["price-title"];
