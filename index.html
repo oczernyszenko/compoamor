@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury Villa with Sea View in Campoamor, Costa Blanca</title>
-  <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views." />
-  <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties" />
-  <meta name="author" content="A1Investments" />
-  <meta property="og:title" content="Luxury Villa with Sea View in Campoamor, Costa Blanca" />
-  <meta property="og:description" content="A unique modern villa with stunning sea views, pool, and designer interiors. Located in Campoamor, Costa Blanca." />
-  <meta property="og:image" content="main-villa.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/villa-campoamor" />
-  <meta name="robots" content="index, follow" />
-
+  <title>Luxury Villa with Sea View in Campoamor</title>
+  <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views.">
+  <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties">
+  <meta name="author" content="A1Investments">
+  <meta property="og:title" content="Luxury Villa with Sea View in Campoamor, Costa Blanca">
+  <meta property="og:description" content="A unique modern villa with stunning sea views, pool, and designer interiors. Located in Campoamor, Costa Blanca.">
+  <meta property="og:image" content="https://oczernyszenko.github.io/compoamor/main-villa.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oczernyszenko.github.io/compoamor/">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/png" href="/favicon.png">
-
   <style>
     body {
       background-color: #fdf9f6;
@@ -25,484 +23,97 @@
       padding: 0;
       text-align: center;
     }
-    header {
-      position: relative;
-      width: 100%;
-      height: 90vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    header video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-    header h1 {
-  position: relative;
-  z-index: 2;
-  font-size: 3.5rem;
-  font-family: 'Playfair Display', serif;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  background: rgba(0,0,0,0.2);
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-    padding: 8px 16px;
-  }
-}
     #language-selector {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 3;
-      display: flex;
-      gap: 10px;
+      margin: 20px auto;
     }
     #language-selector button {
       background: none;
       border: none;
       cursor: pointer;
+      margin: 0 5px;
     }
     #language-selector img {
-  width: 30px;
-  height: auto;
-}
-
-@media (max-width: 600px) {
-  #language-selector {
-    top: 10px;
-    right: 10px;
-    gap: 6px;
-  }
-  #language-selector img {
-    width: 22px;
-  }
-}
-    .info, .gallery, .buttons, .map, .form-section {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    .review-section {
+      background: #fff9d6;
       padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
+      border-radius: 12px;
+      max-width: 960px;
+      margin: 40px auto;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .gallery img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 4px solid #f0e3da;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .buttons a {
-      padding: 14px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-    .red { background-color: #FF0000; }
-    .green { background-color: #25D366; }
-    .map iframe {
-      width: 100%;
-      height: 450px;
-      border: none;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    form input, form textarea {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    form button {
-  background-color: #25D366;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 14px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
-}
-
-@media (max-width: 600px) {
-  form button {
-    font-size: 1.1rem;
-    padding: 16px;
-  }
-}
-    .reviews {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 20px;
+    .review-section h2 {
+      margin-bottom: 20px;
+      color: #003366;
     }
     .review-card {
-  min-width: 300px;
-  max-width: 400px;
-  scroll-snap-align: center;
-  background: #fff9d6;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  font-family: 'Segoe UI', cursive;
-  font-style: italic;
-  color: #003366;
-  border-left: 4px solid #ffc107;
-}
-
-@media (max-width: 600px) {
-  .review-card {
-    min-width: 85vw;
-    padding: 16px;
-  }
-}
-  .review-card {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
+      background: #fff9d6;
+      border-left: 4px solid #ffc107;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 10px;
+      font-style: italic;
+      font-family: 'Segoe UI', cursive;
+      color: #003366;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .review-form {
+      margin-top: 30px;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .review-form button {
+      background-color: #ffc107;
+      color: #003366;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .review-card, .review-form input, .review-form textarea {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="language-selector">
     <button onclick="changeLanguage('en')"><img src="flag-uk.jpg" alt="English" title="English"></button>
     <button onclick="changeLanguage('es')"><img src="flag-spain.jpg" alt="Español" title="Español"></button>
-    <button onclick="changeLanguage('ua')"><img src="Pngtree—ukranian flag png_4069970.png" alt="Українська" title="Українська"></button>
+    <button onclick="changeLanguage('ua')"><img src="A_digital_vector_graphic_features_the_national_fla.png" alt="Українська" title="Українська"></button>
   </div>
-  <header>
-    <video autoplay muted loop playsinline poster="images/main.jpg">
-      <source src="https://oczernyszenko.github.io/compoamor/villa_hero_optimized.mp4" type="video/mp4">
-    </video>
-    <h1 id="main-title">Luxury Villa with Sea View in Campoamor</h1>
-  </header>
 
-  <section class="info">
-    <h2 id="price-title">Price and Features</h2>
-    <h3 id="price">€1,470,000</h3>
-    <p id="location">Campoamor, Costa Blanca</p>
-    <h3 id="land-area">🏡 Land Area: 500 m²</h3>
-    <h3 id="building-area">🏠 Building Area: 320 m²</h3>
-    <h3 id="living-area">🏢 Living Area: 200 m²</h3>
-    <h3 id="sea-view">🌊 Sea View</h3>
-    <p id="description">
-  🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
-  Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.<br><br>
-  This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
-  Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
-  The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
-  A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
-  An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
-</p>
-  </section>
-
-  <section class="gallery">
-  <img src="https://oczernyszenko.github.io/compoamor/main.jpg" alt="Modern luxury villa with panoramic sea view in Spain">
-  <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view">
-  <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area">
-  <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior">
-  <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa">
-  <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa">
-  <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area">
-  <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone">
-  <img src="https://oczernyszenko.github.io/compoamor/villa_4.jpg" alt="Modern white kitchen with direct garden access">
-  <img src="https://oczernyszenko.github.io/compoamor/villa_5.jpg" alt="Spacious bathroom with freestanding bathtub and glass shower">
-  <img src="https://oczernyszenko.github.io/compoamor/photo_7_2025-03-12_16-31-33.JPEG" alt="Backyard with palm trees and decorative landscaping">
-  <img src="https://oczernyszenko.github.io/compoamor/photo_2_2025-03-12_16-31-33%202.JPEG" alt="Outdoor BBQ kitchen surrounded by flowers and plants">
-</section>
-
-  <section class="buttons">
-    <a class="red" id="videoBtn" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
-    <a class="green" id="whatsappBtn" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-  </section>
-
-  <section class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6267.244054474417!2d-0.744829!3d37.908764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ses!4v1713888888888" loading="lazy"></iframe>
-  </section>
-
-  <section class="form-section">
-    <h2>Book a Viewing or Ask a Question</h2>
-    <form id="contactForm">
-  <input type="text" id="contactName" placeholder="Your Name" required>
-  <input type="email" id="contactEmail" placeholder="Your Email" required>
-  <textarea id="contactMessage" placeholder="Your Message or Preferred Date" rows="4" required></textarea>
-  <button type="submit">Send Request</button>
-</form>
-  </section>
-
-  <section class="info">
+  <section class="review-section">
     <h2>What Our Guests Say</h2>
-    <div class="reviews">
+    <div id="reviewsContainer">
       <div class="review-card">
-        <p style="color: #003366;"><em>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</em></p>
-        <strong>— Anna, Germany</strong>
-      </div>
-      <div class="review-card">
-        <p><em>“Una experiencia de lujo en cada detalle. ¡Volveremos seguro!”</em></p>
-        <strong>— Carlos, Spain</strong>
-      </div>
-      <div class="review-card">
-        <p><em>“Чудове місце для сімейного відпочинку. Просторо, чисто, спокійно — ідеально!”</em></p>
-        <strong>— Олена, Україна</strong>
+        <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
+        <strong>— Emily & John</strong>
       </div>
     </div>
-  </section>
 
-  <!-- 🌟 Add Review Form -->
-  <section class="form-section">
-    <h2>Leave a Review</h2>
-    <form id="reviewForm">
+    <form id="reviewForm" class="review-form">
       <input type="text" id="reviewName" placeholder="Your Name" required>
       <textarea id="reviewText" placeholder="Your Review" rows="4" required></textarea>
       <button type="submit">Submit Review</button>
     </form>
   </section>
-
-  <!-- 🧾 Display Reviews -->
-  <section class="info">
-    <h2>What Our Guests Say</h2>
-    <div class="reviews" id="reviewsContainer"></div>
-  </section>
-
-<script>
-    const translations = {
-      "en": {
-        "form-title": "Book a Viewing or Ask a Question",
-        "form-name": "Your Name",
-        "form-email": "Your Email",
-        "form-message": "Your Message or Preferred Date",
-        "form-button": "Send Request",
-        "review-title": "Leave a Review",
-        "review-name": "Your Name",
-        "review-text": "Your Review",
-        "review-button": "Submit Review",
-        "reviews-title": "What Our Guests Say",
-        "title": "Luxury Villa with Sea View in Campoamor",
-        "price-title": "Price and Features",
-        "price": "€1,470,000",
-        "location": "Campoamor, Costa Blanca",
-        "land-area": "Land Area: 500 m²",
-        "building-area": "Building Area: 320 m²",
-        "living-area": "Living Area: 200 m²",
-        "sea-view": "Sea View",
-        "description": "🌟 Villa where dreams come true — Campoamor, Costa Blanca
-
-Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.
-
-This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.
-
-Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.
-
-The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.
-
-A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.
-
-An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle."
-      },
-      "es": {
-        "form-title": "Reservar una visita o hacer una consulta",
-        "form-name": "Tu nombre",
-        "form-email": "Tu correo electrónico",
-        "form-message": "Tu mensaje o fecha preferida",
-        "form-button": "Enviar solicitud",
-        "review-title": "Deja una reseña",
-        "review-name": "Tu nombre",
-        "review-text": "Tu reseña",
-        "review-button": "Enviar reseña",
-        "reviews-title": "Lo que dicen nuestros huéspedes",
-        "title": "Villa de lujo con vistas al mar en Campoamor",
-        "price-title": "Precio y características",
-        "price": "€1,470,000",
-        "location": "Campoamor, Costa Blanca",
-        "land-area": "Área del terreno: 500 m²",
-        "building-area": "Área construida: 320 m²",
-        "living-area": "Área habitable: 200 m²",
-        "sea-view": "Vistas al mar",
-        "description": "🌟 Villa donde los sueños se hacen realidad — Campoamor, Costa Blanca
-
-Bienvenido a Campoamor, un rincón paradisíaco en la Costa Blanca donde el mar Mediterráneo se encuentra con una arquitectura llena de luz, elegancia y alma.
-
-Esta villa única ha sido creada para quienes aprecian la estética, la armonía y la comodidad. En una parcela de 500 m² con 320 m² construidos y 200 m² habitables, esta residencia está bañada de luz natural y diseñada con gusto.
-
-Cada ventana se abre al mar, transformando el interior en un espacio abierto ideal para relajarse, celebrar o contemplar.
-
-La casa cuenta con cuatro dormitorios en suite, cada uno con su baño privado equipado con sanitarios de diseño. Los interiores destacan por su paleta clara, paredes blancas, mármol, materiales naturales, grandes ventanas panorámicas y muebles de diseño. Todo irradia ligereza, sofisticación y serenidad.
-
-Una piscina con fuente, terrazas con vistas al mar, zona lounge, escaleras de cristal como objeto artístico, sistema de hogar inteligente con iluminación ambiental, amplios armarios empotrados, zona de barbacoa y cuarto de lavado independiente: cada detalle está pensado para un nivel de vida excepcional.
-
-Una joya arquitectónica en una de las zonas más prestigiosas de la costa española. La elección perfecta para quienes buscan no solo una casa, sino un estilo de vida."
-      },
-      "ua": {
-        "form-title": "Забронювати перегляд або поставити питання",
-        "form-name": "Ваше ім’я",
-        "form-email": "Ваша електронна пошта",
-        "form-message": "Ваше повідомлення або бажана дата",
-        "form-button": "Надіслати запит",
-        "review-title": "Залишити відгук",
-        "review-name": "Ваше ім’я",
-        "review-text": "Ваш відгук",
-        "review-button": "Надіслати відгук",
-        "reviews-title": "Що кажуть наші гості",
-        "title": "Розкішна вілла з видом на море в Кампоаморі",
-        "price-title": "Ціна та характеристики",
-        "price": "€1 470 000",
-        "location": "Кампоамор, Коста Бланка",
-        "land-area": "Площа ділянки: 500 м²",
-        "building-area": "Площа забудови: 320 м²",
-        "living-area": "Житлова площа: 200 м²",
-        "sea-view": "Вид на море",
-        "description": "🌟 Вілла, де збуваються мрії — Кампоамор, Коста Бланка
-
-Ласкаво просимо до Кампоамора — райського куточка на узбережжі Коста Бланка, де Середземне море зустрічається з архітектурою, наповненою світлом, елегантністю та душею.
-
-Ця унікальна вілла створена для тих, хто цінує естетику, гармонію та комфорт. На ділянці площею 500 м², з 320 м² забудови та 200 м² житлової площі, ця резиденція купається у природному світлі та витончено спроєктована.
-
-Кожне вікно відкривається до моря, перетворюючи інтер’єр на відкритий, плинний простір — ідеальний для відпочинку, святкування чи роздумів.
-
-У будинку чотири спальні з ванними кімнатами, кожна з яких обладнана дизайнерською сантехнікою. Інтер’єри виділяються світлою палітрою, білими стінами, мармуром, натуральними матеріалами, великими панорамними вікнами та дизайнерськими меблями. Усе дихає легкістю, витонченістю та спокоєм.
-
-Басейн з фонтаном, тераси з панорамним видом на море, лаунж-зона, скляні сходи як арт-об’єкт, система "розумний будинок" з атмосферним освітленням, місткі вбудовані шафи, зона барбекю та окрема пральня — кожна деталь продумана для виняткового рівня життя.
-
-Архітектурна перлина в одному з найпрестижніших районів узбережжя Іспанії. Ідеальний вибір для тих, хто шукає не просто дім, а стиль життя."
-      }
-    };
-    function changeLanguage(lang) {
-      document.getElementById("videoBtn").innerHTML = `<i class='fab fa-youtube'></i> ${lang === 'es' ? 'Vídeo' : lang === 'ua' ? 'Відео' : 'Video'}`;
-      document.getElementById("whatsappBtn").innerHTML = `<i class='fab fa-whatsapp'></i> ${lang === 'es' ? 'WhatsApp' : lang === 'ua' ? 'Ватсап' : 'WhatsApp'}`;
-      document.querySelector(".form-section h2").innerHTML = translations[lang]["form-title"];
-      document.getElementById("contactName").placeholder = translations[lang]["form-name"];
-      document.getElementById("contactEmail").placeholder = translations[lang]["form-email"];
-      document.getElementById("contactMessage").placeholder = translations[lang]["form-message"];
-      document.querySelector("#contactForm button").innerHTML = translations[lang]["form-button"];
-
-      document.querySelector("#reviewForm").previousElementSibling.innerHTML = translations[lang]["review-title"];
-      document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
-      document.getElementById("reviewText").placeholder = translations[lang]["review-text"];
-      document.querySelector("#reviewForm button").innerHTML = translations[lang]["review-button"];
-
-      document.querySelectorAll(".info h2")[1].innerHTML = translations[lang]["reviews-title"];
-
-
-      document.querySelector("#main-title").innerHTML = translations[lang].title;
-      document.querySelector("#price-title").innerHTML = translations[lang]["price-title"];
-      document.querySelector("#price").innerHTML = translations[lang].price;
-      document.querySelector("#location").innerHTML = translations[lang].location;
-      document.querySelector("#land-area").innerHTML = translations[lang]["land-area"];
-      document.querySelector("#building-area").innerHTML = translations[lang]["building-area"];
-      document.querySelector("#living-area").innerHTML = translations[lang]["living-area"];
-      document.querySelector("#sea-view").innerHTML = translations[lang]["sea-view"];
-      document.querySelector("#description").innerHTML = translations[lang].description;
-    }
-  // 👇 Review Form Submission
-    document.getElementById("reviewForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("reviewName").value.trim();
-      const review = document.getElementById("reviewText").value.trim();
-      if (!name || !review) return alert("Please fill in both fields.");
-
-      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
-        method: "POST",
-        body: JSON.stringify({ name, message: review }),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.text())
-      .then(() => {
-        alert("Thank you for your review!");
-        document.getElementById("reviewForm").reset();
-        loadReviews();
-      })
-      .catch(err => alert("Error submitting review"));
-    });
-
-    // 👇 Load and Display Reviews
-    function loadReviews() {
-      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec")
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById("reviewsContainer");
-          container.innerHTML = "";
-          data.reverse().forEach(r => {
-            const div = document.createElement("div");
-            div.className = "review-card";
-            div.innerHTML = `<p><em>"${r.message}"</em></p><strong>— ${r.name}</strong>`;
-            container.appendChild(div);
-          });
-        });
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-  loadReviews();
-  setInterval(() => {
-    const container = document.getElementById("reviewsContainer");
-    if (container && container.scrollWidth > container.clientWidth) {
-      container.scrollBy({ left: 300, behavior: 'smooth' });
-      // Перемотка в начало если конец достигнут
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      }
-    }
-  }, 5000); // каждые 5 секунд
-});
-  // 👇 Contact Form Submission
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const message = document.getElementById("contactMessage").value.trim();
-
-      if (!name || !email || !message) return alert("Please fill in all fields.");
-
-      const mailto = `mailto:o.czernyszenko@gmail.com?subject=Villa Inquiry from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0AMessage: ${encodeURIComponent(message)}`;
-      window.location.href = mailto;
-    });
-</script>
 </body>
 </html>
