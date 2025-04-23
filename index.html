@@ -188,17 +188,62 @@
         An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
       </p>
     </section>
-    
-    <section class="gallery">
+
+  <!-- CSS: можно вставить в <head> или в <style> -->
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<!-- HTML: блок секции -->
+<section style="padding: 60px 20px; background: #f9f9f9; font-family: sans-serif;">
+  <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: #333;">
+    Explore the Villa
+  </h2>
+
+  <div class="gallery">
+    <img src="https://oczernyszenko.github.io/compoamor/main.jpg" alt="Modern luxury villa with panoramic sea view in Spain">
+    <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view">
+    <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area">
+    <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior">
+    <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa">
+    <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa">
+    <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area">
+    <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone">
+    <img src="https://oczernyszenko.github.io/compoamor/villa_4.jpg" alt="Modern white kitchen with direct garden access">
+    <img src="https://oczernyszenko.github.io/compoamor/villa_5.jpg" alt="Spacious bathroom with freestanding bathtub and glass shower">
+    <img src="https://oczernyszenko.github.io/compoamor/photo_7_2025-03-12_16-31-33.JPEG" alt="Backyard with palm trees and decorative landscaping">
+    <img src="https://oczernyszenko.github.io/compoamor/photo_2_2025-03-12_16-31-33%202.JPEG" alt="Outdoor BBQ kitchen surrounded by flowers and plants">
+  </div>
+</section>   <!-- <section class="gallery">
     <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view" style="width: 100%; border-radius: 10px;">
     <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area" style="width: 100%; border-radius: 10px;">
     <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior" style="width: 100%; border-radius: 10px;">
     <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa" style="width: 100%; border-radius: 10px;">
     <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa" style="width: 100%; border-radius: 10px;">
     <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area" style="width: 100%; border-radius: 10px;">
-    <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone" style="width: 100%; border-radius: 10px;">    </section> 
-    <div class="buttons">
-      
+    <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone" style="width: 100%; border-radius: 10px;">    
+    </section> -->
+
+  <div class="buttons">  
       <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
       <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
