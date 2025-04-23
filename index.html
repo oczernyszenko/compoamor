@@ -4,23 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luxury Villa with Sea View in Campoamor</title>
-  <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views.">
-  <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties">
-  <meta name="author" content="A1Investments">
-  <meta property="og:title" content="Luxury Villa with Sea View in Campoamor, Costa Blanca">
-  <meta property="og:description" content="A unique modern villa with stunning sea views, pool, and designer interiors. Located in Campoamor, Costa Blanca.">
-  <meta property="og:image" content="https://oczernyszenko.github.io/compoamor/main-villa.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://oczernyszenko.github.io/compoamor/">
-  <meta name="robots" content="index, follow">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views." />
+  <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties" />
+  <meta name="author" content="A1Investments" />
+  <meta property="og:title" content="Luxury Villa with Sea View in Campoamor, Costa Blanca" />
+  <meta property="og:description" content="A unique modern villa with stunning sea views, pool, and designer interiors. Located in Campoamor, Costa Blanca." />
+  <meta property="og:image" content="https://oczernyszenko.github.io/compoamor/main-villa.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/villa-campoamor" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SingleFamilyResidence",
+    "name": "Luxury Villa in Campoamor",
+    "description": "A stunning modern villa with sea views, pool, and designer interiors located in the prestigious Campoamor area, Costa Blanca.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Campoamor",
+      "addressRegion": "Alicante",
+      "addressCountry": "ES"
+    },
+    "image": "https://example.com/main-villa.jpg",
+    "url": "https://example.com/villa-campoamor",
+    "numberOfRooms": 4,
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": 200,
+      "unitCode": "MTK"
+    },
+    "price": 1470000,
+    "priceCurrency": "EUR"
+  }
+  </script>
+
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       background-color: #fdf9f6;
       font-family: 'Lato', sans-serif;
-      margin: 0;
-      padding: 0;
       text-align: center;
     }
     #language-selector {
@@ -103,30 +130,29 @@
     <button onclick="changeLanguage('ua')"><img src="ukraine-flag.png" alt="Українська" title="Українська"></button>
   </div>
 
-  <!-- BEGIN: REVIEWS SECTION -->
-<section id="reviews" class="review-section">
-  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-    <button id="prevReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">←</button>
-    <button id="nextReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">→</button>
-  </div>
-  <h2>What Our Guests Say</h2>
-  <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
-    <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%; will-change: transform;">
-      <div class="review-card" style="flex: 0 0 100%; min-width: 100%; box-sizing: border-box;">
-        <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
-        <strong>— Emily & John</strong>
-      </div>
+  <section id="reviews" class="review-section">
+    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
+      <button id="prevReview">←</button>
+      <button id="nextReview">→</button>
     </div>
-    <div id="reviewIndicators" style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px;"></div>
-  </div>
-  <form id="reviewForm" class="review-form">
-    <input type="text" id="reviewName" placeholder="Your Name" required>
-    <input type="email" id="reviewEmail" placeholder="Your Email" required>
-    <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required></textarea>
-    <button type="submit">Send Request</button>
-  </form>
-</section>
-<!-- END: REVIEWS SECTION -->
+    <h2>What Our Guests Say</h2>
+    <div id="reviewsContainer">
+      <div class="review-slider">
+        <div class="review-card">
+          <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
+          <strong>— Emily & John</strong>
+        </div>
+      </div>
+      <div id="reviewIndicators"></div>
+    </div>
+    <form id="reviewForm" class="review-form">
+      <input type="text" id="reviewName" placeholder="Your Name" required>
+      <input type="email" id="reviewEmail" placeholder="Your Email" required>
+      <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
+
   <script>
     const translations = {
       en: {
@@ -175,10 +201,6 @@
 
     startAutoSlide();
 
-    const reviewsContainer = document.getElementById("reviewsContainer");
-    reviewsContainer.addEventListener("mouseenter", stopAutoSlide);
-    reviewsContainer.addEventListener("mouseleave", startAutoSlide);
-
     document.getElementById("prevReview").addEventListener("click", () => {
       const slider = document.querySelector('.review-slider');
       const total = slider.children.length;
@@ -198,9 +220,18 @@
     document.getElementById("reviewForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("reviewName").value.trim();
+      const email = document.getElementById("reviewEmail").value.trim();
       const message = document.getElementById("reviewText").value.trim();
 
-      if (!name || !message) return alert("Please fill in all fields.");
+      if (!name || !email || !message) return alert("Please fill in all fields.");
+
+      // SEND TO EMAIL via Google Apps Script
+      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
 
       const slider = document.querySelector('.review-slider');
       const wrapper = document.createElement("div");
@@ -242,7 +273,6 @@
 
     setInterval(updateIndicators, 6000);
     updateIndicators();
-  document.querySelectorAll('#language-selector button').forEach(btn => btn.addEventListener('click', () => updateIndicators()));
-$1
+  </script>
 </body>
 </html>
