@@ -44,16 +44,23 @@
       z-index: 1;
     }
     header h1 {
-      position: relative;
-      z-index: 2;
-      font-size: 3.5rem;
-      font-family: 'Playfair Display', serif;
-      color: white;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      background: rgba(0,0,0,0.2);
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
+  position: relative;
+  z-index: 2;
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+    padding: 8px 16px;
+  }
+}
     #language-selector {
       position: absolute;
       top: 20px;
@@ -68,9 +75,20 @@
       cursor: pointer;
     }
     #language-selector img {
-      width: 30px;
-      height: auto;
-    }
+  width: 30px;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  #language-selector {
+    top: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+  #language-selector img {
+    width: 22px;
+  }
+}
     .info, .gallery, .buttons, .map, .form-section {
       padding: 40px 20px;
       max-width: 1200px;
@@ -82,14 +100,15 @@
       gap: 20px;
     }
     .gallery img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 4px solid #f0e3da;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 4px solid #f0e3da;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
     .gallery img:hover {
       transform: scale(1.03);
     }
@@ -130,16 +149,24 @@
       border: 1px solid #ccc;
     }
     form button {
-      background-color: #25D366;
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
+  background-color: #25D366;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  form button {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+}
     .reviews {
       display: flex;
       overflow-x: auto;
@@ -148,21 +175,29 @@
       padding-bottom: 20px;
     }
     .review-card {
-      min-width: 300px;
-      max-width: 400px;
-      scroll-snap-align: center;
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+  min-width: 300px;
+  max-width: 400px;
+  scroll-snap-align: center;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .review-card {
+    min-width: 85vw;
+    padding: 16px;
+  }
+}
   </style>
 </head>
 <body>
   <div id="language-selector">
-    <button onclick="changeLanguage('en')"><img src="images/flag-uk.png" alt="EN"></button>
-    <button onclick="changeLanguage('es')"><img src="images/flag-spain.png" alt="ES"></button>
-    <button onclick="changeLanguage('ua')"><img src="images/flag-ua.png" alt="UA"></button>
+    <button onclick="changeLanguage('en')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-uk.png" alt="EN"></button>
+    <button onclick="changeLanguage('es')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-spain.png" alt="ES"></button>
+    <button onclick="changeLanguage('ua')"><img src="https://oczernyszenko.github.io/compoamor/images/flag-ua.png" alt="UA"></button>
   </div>
   <header>
     <video autoplay muted loop playsinline poster="images/main.jpg">
@@ -242,9 +277,35 @@
     </div>
   </section>
 
-  <script>
+  <!-- 🌟 Add Review Form -->
+  <section class="form-section">
+    <h2>Leave a Review</h2>
+    <form id="reviewForm">
+      <input type="text" id="reviewName" placeholder="Your Name" required>
+      <textarea id="reviewText" placeholder="Your Review" rows="4" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </section>
+
+  <!-- 🧾 Display Reviews -->
+  <section class="info">
+    <h2>What Our Guests Say</h2>
+    <div class="reviews" id="reviewsContainer"></div>
+  </section>
+
+<script>
     const translations = {
       "en": {
+        "form-title": "Book a Viewing or Ask a Question",
+        "form-name": "Your Name",
+        "form-email": "Your Email",
+        "form-message": "Your Message or Preferred Date",
+        "form-button": "Send Request",
+        "review-title": "Leave a Review",
+        "review-name": "Your Name",
+        "review-text": "Your Review",
+        "review-button": "Submit Review",
+        "reviews-title": "What Our Guests Say",
         "title": "Luxury Villa with Sea View in Campoamor",
         "price-title": "Price and Features",
         "price": "€1,470,000",
@@ -268,6 +329,16 @@ A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs 
 An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle."
       },
       "es": {
+        "form-title": "Reservar una visita o hacer una consulta",
+        "form-name": "Tu nombre",
+        "form-email": "Tu correo electrónico",
+        "form-message": "Tu mensaje o fecha preferida",
+        "form-button": "Enviar solicitud",
+        "review-title": "Deja una reseña",
+        "review-name": "Tu nombre",
+        "review-text": "Tu reseña",
+        "review-button": "Enviar reseña",
+        "reviews-title": "Lo que dicen nuestros huéspedes",
         "title": "Villa de lujo con vistas al mar en Campoamor",
         "price-title": "Precio y características",
         "price": "€1,470,000",
@@ -291,6 +362,16 @@ Una piscina con fuente, terrazas con vistas al mar, zona lounge, escaleras de cr
 Una joya arquitectónica en una de las zonas más prestigiosas de la costa española. La elección perfecta para quienes buscan no solo una casa, sino un estilo de vida."
       },
       "ua": {
+        "form-title": "Забронювати перегляд або поставити питання",
+        "form-name": "Ваше ім’я",
+        "form-email": "Ваша електронна пошта",
+        "form-message": "Ваше повідомлення або бажана дата",
+        "form-button": "Надіслати запит",
+        "review-title": "Залишити відгук",
+        "review-name": "Ваше ім’я",
+        "review-text": "Ваш відгук",
+        "review-button": "Надіслати відгук",
+        "reviews-title": "Що кажуть наші гості",
         "title": "Розкішна вілла з видом на море в Кампоаморі",
         "price-title": "Ціна та характеристики",
         "price": "€1 470 000",
@@ -315,6 +396,20 @@ Una joya arquitectónica en una de las zonas más prestigiosas de la costa espa�
       }
     };
     function changeLanguage(lang) {
+      document.querySelector(".form-section h2").innerHTML = translations[lang]["form-title"];
+      document.querySelector("form input[placeholder='Your Name']").placeholder = translations[lang]["form-name"];
+      document.querySelector("form input[placeholder='Your Email']").placeholder = translations[lang]["form-email"];
+      document.querySelector("form textarea[placeholder='Your Message or Preferred Date']").placeholder = translations[lang]["form-message"];
+      document.querySelector("form button[type='submit']").innerHTML = translations[lang]["form-button"];
+
+      document.querySelector("#reviewForm").previousElementSibling.innerHTML = translations[lang]["review-title"];
+      document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
+      document.getElementById("reviewText").placeholder = translations[lang]["review-text"];
+      document.querySelector("#reviewForm button").innerHTML = translations[lang]["review-button"];
+
+      document.querySelectorAll(".info h2")[1].innerHTML = translations[lang]["reviews-title"];
+
+
       document.querySelector("#main-title").innerHTML = translations[lang].title;
       document.querySelector("#price-title").innerHTML = translations[lang]["price-title"];
       document.querySelector("#price").innerHTML = translations[lang].price;
@@ -325,6 +420,56 @@ Una joya arquitectónica en una de las zonas más prestigiosas de la costa espa�
       document.querySelector("#sea-view").innerHTML = translations[lang]["sea-view"];
       document.querySelector("#description").innerHTML = translations[lang].description;
     }
+  // 👇 Review Form Submission
+    document.getElementById("reviewForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("reviewName").value.trim();
+      const review = document.getElementById("reviewText").value.trim();
+      if (!name || !review) return alert("Please fill in both fields.");
+
+      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+        method: "POST",
+        body: JSON.stringify({ name, message: review }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.text())
+      .then(() => {
+        alert("Thank you for your review!");
+        document.getElementById("reviewForm").reset();
+        loadReviews();
+      })
+      .catch(err => alert("Error submitting review"));
+    });
+
+    // 👇 Load and Display Reviews
+    function loadReviews() {
+      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec")
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("reviewsContainer");
+          container.innerHTML = "";
+          data.reverse().forEach(r => {
+            const div = document.createElement("div");
+            div.className = "review-card";
+            div.innerHTML = `<p><em>"${r.message}"</em></p><strong>— ${r.name}</strong>`;
+            container.appendChild(div);
+          });
+        });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+  loadReviews();
+  setInterval(() => {
+    const container = document.getElementById("reviewsContainer");
+    if (container && container.scrollWidth > container.clientWidth) {
+      container.scrollBy({ left: 300, behavior: 'smooth' });
+      // Перемотка в начало если конец достигнут
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }
+  }, 5000); // каждые 5 секунд
+});
   </script>
 </body>
 </html>
