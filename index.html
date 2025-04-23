@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Villa with Sea View in Campoamor, Costa Blanca</title>
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="Luxury villa with sea views in Campoamor, Costa Blanca. Perfect blend of elegance, design, and comfort with panoramic sea views." />
   <meta name="keywords" content="Luxury villa Campoamor, Costa Blanca real estate, sea view villa, modern villa for sale, beachfront villa, Spain luxury properties" />
@@ -11,7 +15,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com/villa-campoamor" />
   <meta name="robots" content="index, follow" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,10 +41,10 @@
     "priceCurrency": "EUR"
   }
   </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury Villa with Sea View in Campoamor, Costa Blanca</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       background-color: #fdf9f6;
@@ -75,22 +80,23 @@
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      justify-items: center;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
     }
     .gallery img {
       width: 100%;
-      height: auto;
+      height: 300px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 4px solid #f0e3da;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
     .buttons {
       display: flex;
@@ -115,9 +121,9 @@
       transform: translateY(2px);
       box-shadow: none;
     }
-    .red { background-color: #FF0000; } /* YouTube */
-    .green { background-color: #25D366; } /* WhatsApp */
-    .blue { background-color: #4285F4; } /* Google */
+    .red { background-color: #FF0000; }
+    .green { background-color: #25D366; }
+    .blue { background-color: #4285F4; }
     .map iframe {
       display: block;
       margin: 40px auto;
@@ -138,24 +144,19 @@
       width: 30px;
       height: auto;
     }
-
-    /* Mobile Adaptation */
     @media (max-width: 768px) {
       .gallery {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    /* Tablet and Larger Screens */
-    @media (max-width: 1024px) {
+    @media (max-width: 576px) {
       .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-
   <div id="language-selector">
     <button onclick="changeLanguage('en')">
       <img src="flag-uk.png" alt="English"> EN
@@ -164,121 +165,56 @@
       <img src="flag-spain.png" alt="Spanish"> ES
     </button>
   </div>
-    <!-- Главная фотография --> 
-  <div style="max-width: 1200px; margin: 40px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.2);">
-      <img src="images/main.jpg" alt="Main villa image with sea view" style="width: 100%; height: auto; display: block;">
-    </div>
 
-    <section class="info">
-      <h2 id="price-title">Price and Features</h2>
-      <h3 id="price">€1,470,000</h3>
-      <p id="location">Campoamor, Costa Blanca</p>
-      <h3 id="land-area">🏡 Land Area: 500 m²</h3>
-      <h3 id="building-area">🏠 Building Area: 320 m²</h3>
-      <h3 id="living-area">🏢 Living Area: 200 m²</h3>
-      <h3 id="sea-view">🌊 Sea View</h3>
+  <header>
+    <h1 id="main-title">Luxury Villa with Sea View in Campoamor</h1>
+  </header>
 
-      <p id="description">
-        🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
-        Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.<br><br>
-        This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
-        Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
-        The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
-        A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
-        An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
-      </p>
-    </section>
-
-  <!-- CSS: можно вставить в <head> или в <style> -->
-<style>
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .gallery img {
-    width: 100%;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .gallery img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-</style>
-
-<!-- HTML: блок секции -->
-<section style="padding: 60px 20px; background: #f9f9f9; font-family: sans-serif;">
-  
-<!-- 🌴 Explore the Villa Gallery Section -->
-<section style="padding: 60px 20px; background: #f9f9f9; font-family: sans-serif;">
-
- 
-
-  <!-- Gallery Grid -->
-  <div class="gallery">
-    <img src="https://oczernyszenko.github.io/compoamor/main.jpg" alt="Modern luxury villa with panoramic sea view in Spain">
-    <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view">
-    <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area">
-    <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior">
-    <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa">
-    <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa">
-    <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area">
-    <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone">
-    <img src="https://oczernyszenko.github.io/compoamor/villa_4.jpg" alt="Modern white kitchen with direct garden access">
-    <img src="https://oczernyszenko.github.io/compoamor/villa_5.jpg" alt="Spacious bathroom with freestanding bathtub and glass shower">
-    <img src="https://oczernyszenko.github.io/compoamor/photo_7_2025-03-12_16-31-33.JPEG" alt="Backyard with palm trees and decorative landscaping">
-    <img src="https://oczernyszenko.github.io/compoamor/photo_2_2025-03-12_16-31-33%202.JPEG" alt="Outdoor BBQ kitchen surrounded by flowers and plants">
+  <div class="info">
+    <h2 id="price-title">Price and Features</h2>
+    <h3 id="price">€1,470,000</h3>
+    <p id="location">Campoamor, Costa Blanca</p>
+    <h3 id="land-area">🏡 Land Area: 500 m²</h3>
+    <h3 id="building-area">🏠 Building Area: 320 m²</h3>
+    <h3 id="living-area">🏢 Living Area: 200 m²</h3>
+    <h3 id="sea-view">🌊 Sea View</h3>
+    <p id="description">
+      🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
+      Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.<br><br>
+      This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
+      Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
+      The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
+      A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
+      An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
+    </p>
   </div>
 
-</section>
-
-<!-- 💅 Gallery Styles -->
-<style>
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 768px) {
-    .gallery {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .gallery img {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .gallery img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-</style>
+  <section>
+    <div class="gallery">
+      <img src="https://oczernyszenko.github.io/compoamor/main.jpg" alt="Modern luxury villa with panoramic sea view in Spain">
+      <img src="https://oczernyszenko.github.io/compoamor/terrace.jpg" alt="Spacious terrace with ocean view">
+      <img src="https://oczernyszenko.github.io/compoamor/pool-front.jpg" alt="Villa with front pool area">
+      <img src="https://oczernyszenko.github.io/compoamor/interior-living.jpg" alt="Bright living room interior">
+      <img src="https://oczernyszenko.github.io/compoamor/sea-view.jpg" alt="Breathtaking sea view from the villa">
+      <img src="https://oczernyszenko.github.io/compoamor/villa-side.jpg" alt="Side view of the villa">
+      <img src="https://oczernyszenko.github.io/compoamor/pool-garden.jpg" alt="Pool and garden area">
+      <img src="https://oczernyszenko.github.io/compoamor/roof-terrace.jpg" alt="Rooftop terrace with lounge zone">
+      <img src="https://oczernyszenko.github.io/compoamor/villa_4.jpg" alt="Modern white kitchen with direct garden access">
+      <img src="https://oczernyszenko.github.io/compoamor/villa_5.jpg" alt="Spacious bathroom with freestanding bathtub and glass shower">
+      <img src="https://oczernyszenko.github.io/compoamor/photo_7_2025-03-12_16-31-33.JPEG" alt="Backyard with palm trees and decorative landscaping">
+      <img src="https://oczernyszenko.github.io/compoamor/photo_2_2025-03-12_16-31-33%202.JPEG" alt="Outdoor BBQ kitchen surrounded by flowers and plants">
+    </div>
+  </section>
 
   <div class="buttons">  
-      <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
-      <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
+    <a class="red" href="https://youtu.be/i6S_F_JLPfA?si=BvujyQDfIqTtfjvS" target="_blank"><i class="fab fa-youtube"></i> Video</a>
+    <a class="green" href="https://wa.me/34604158859" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </div>
 
-   <div class="map">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.9586474666844!2d-0.7443483863104041!3d37.90802925223873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd630619c21eae9b%3A0x8a089c5dd77e0b0d!2sC.%20Ana%20Mar%C3%ADa%20Matute%2C%2003189%20Orihuela%2C%20Alicante!5e0!3m2!1sru!2ses!4v1745302309502!5m2!1sru!2ses" 
-  width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>  
-  </main>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.9586474666844!2d-0.7443483863104041!3d37.90802925223873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd630619c21eae9b%3A0x8a089c5dd77e0b0d!2sC.%20Ana%20Mar%C3%ADa%20Matute%2C%2003189%20Orihuela%2C%20Alicante!5e0!3m2!1sru!2ses!4v1745302309502!5m2!1sru!2ses" 
+    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>  
 
   <script>
     const translations = {
@@ -318,6 +254,5 @@
       document.querySelector("#description").innerHTML = translations[lang].description;
     }
   </script>
-
 </body>
 </html>
