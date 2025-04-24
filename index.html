@@ -242,7 +242,7 @@
     }
   </script>
 
-  <section id="reviews" class="review-section" style="background-color: #fff9d6; padding: 40px 20px; border-radius: 12px;">
+<section id="reviews" class="review-section" style="background-color: #fff9d6; padding: 40px 20px; border-radius: 12px;">
   <h2>What Our Guests Say</h2>
   
   <!-- Navigation arrows -->
@@ -254,8 +254,7 @@
   <!-- Reviews container -->
   <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
     <div class="review-slider">
-
-      <!-- Review cards -->
+      <!-- Initial review cards -->
       <div class="review-card">
         <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
         <strong>— Emily & John</strong>
@@ -283,81 +282,7 @@
   <form id="reviewForm" class="review-form">
     <input type="text" id="reviewName" placeholder="Your Name" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;">
     <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea>
-    <button type="submit" style="background-color: #ffc107; color: #003366; font-weight: bold; font-size: 1rem; padding: 14px 28px; border: none; border-radius: 30px; cursor: pointer;">Send Request</button>
-  </form>
-</section>
-
-<!-- Styles for the reviews and responsiveness -->
-<style>
-  .review-slider {
-    display: flex;
-    overflow: hidden;
-    gap: 20px;
-    transition: transform 0.5s ease;
-  }
-
-  .review-card {
-    background: #fff9d6;
-    border-left: 4px solid #ffc107;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 10px;
-    font-style: italic;
-    font-family: 'Segoe UI', cursive;
-    color: #003366;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: calc(33.33% - 20px); /* Ensures 3 cards per row */
-    transition: transform 0.3s ease;
-  }
-
-  @media (max-width: 768px) {
-    .review-card {
-      width: 100%; /* 1 card per row on mobile */
-    }
-  }
-
-  @media (min-width: 768px) {
-    #reviewsContainer {
-      width: 100%;
-    }
-    .review-slider {
-      display: flex;
-      gap: 20px;
-    }
-  }
-</style>
-
-<!-- Script to handle auto-sliding and navigation -->
-<script>
-  let currentReviewIndex = 0;
-  const reviews = document.querySelectorAll('.review-card');
-  const totalReviews = reviews.length;
-
-  // Function to move to next review
-  function nextReview() {
-    currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
-    updateReviewSlider();
-  }
-
-  // Function to move to previous review
-  function prevReview() {
-    currentReviewIndex = (currentReviewIndex - 1 + totalReviews) % totalReviews;
-    updateReviewSlider();
-  }
-
-  // Update the position of reviews in slider
-  function updateReviewSlider() {
-    const slider = document.querySelector('.review-slider');
-    slider.style.transform = `translateX(-${currentReviewIndex * (100 / 3)}%)`;
-  }
-
-  // Adding event listeners for navigation arrows
-  document.getElementById("nextReview").addEventListener("click", nextReview);
-  document.getElementById("prevReview").addEventListener("click", prevReview);
-
-  // Auto sliding of reviews
-  setInterval(nextReview, 5000);  // Change review every 5 seconds
-</script>
+    <button type="submit" style="background-color: #
  
 </body>
 </html>
