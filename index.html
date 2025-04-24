@@ -426,7 +426,7 @@
         `;
         slides.appendChild(slide);
       });
-      swiper.update();
+      setTimeout(() => swiper.update(), 100);
     }
 
     let selectedRating = 0;
@@ -456,6 +456,10 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       const swiper = new Swiper(".mySwiper", {
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
         slidesPerView: 5,
         spaceBetween: 20,
         loop: true,
