@@ -281,9 +281,9 @@
 
   <!-- Google login form for adding reviews -->
   <form id="reviewForm" class="review-form">
-    <input type="text" id="reviewName" placeholder="Your Name" required>
-    <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required></textarea>
-    <button type="submit">Send Request</button>
+    <input type="text" id="reviewName" placeholder="Your Name" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;">
+    <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+    <button type="submit" style="background-color: #ffc107; color: #003366; font-weight: bold; font-size: 1rem; padding: 14px 28px; border: none; border-radius: 30px; cursor: pointer;">Send Request</button>
   </form>
 </section>
 
@@ -294,6 +294,7 @@
     display: flex;
     overflow: hidden;
     gap: 20px;
+    transition: transform 0.5s ease;
   }
 
   .review-card {
@@ -358,7 +359,6 @@
   // Auto sliding of reviews
   setInterval(nextReview, 5000);  // Change review every 5 seconds
 </script>
-
 </body>
 </html>
 </body>
