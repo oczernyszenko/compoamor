@@ -241,8 +241,8 @@
       document.querySelector("#description").innerHTML = translations[lang].description;
     }
   </script>
- 
-<section id="reviews" class="review-section" style="background-color: #fff9d6; padding: 40px 20px; border-radius: 12px;">
+
+  <section id="reviews" class="review-section" style="background-color: #fff9d6; padding: 40px 20px; border-radius: 12px;">
   <h2>What Our Guests Say</h2>
   
   <!-- Navigation arrows -->
@@ -289,7 +289,6 @@
 
 <!-- Styles for the reviews and responsiveness -->
 <style>
-  /* Responsive settings for gallery */
   .review-slider {
     display: flex;
     overflow: hidden;
@@ -333,7 +332,7 @@
   let currentReviewIndex = 0;
   const reviews = document.querySelectorAll('.review-card');
   const totalReviews = reviews.length;
-  
+
   // Function to move to next review
   function nextReview() {
     currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
@@ -359,6 +358,7 @@
   // Auto sliding of reviews
   setInterval(nextReview, 5000);  // Change review every 5 seconds
 </script>
+ 
 </body>
 </html>
 </body>
