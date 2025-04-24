@@ -254,28 +254,7 @@
   <!-- Reviews container -->
   <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
     <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%; will-change: transform;">
-      
-      <!-- Review cards -->
-      <div class="review-card">
-        <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
-        <strong>— Emily & John</strong>
-      </div>
-      <div class="review-card">
-        <p>“Wirklich großartige Video-Präsentation! Die Villa sieht auf dem Bildschirm unglaublich aus, aber als wir ankamen, waren die Eindrücke noch stärker. Wir sind absolut sicher in unserer Wahl!”</p>
-        <strong>— Thomas und Sophie</strong>
-      </div>
-      <div class="review-card">
-        <p>“After watching the video showing the entire villa, its terrace, pool, and sea views, I knew this was the house I dreamed of. I can't wait for the personal showing!”</p>
-        <strong>— Jonathan</strong>
-      </div>
-      <div class="review-card">
-        <p>“В видео всё было показано так реалистично и детально! Нам понравилась съемка интерьера, а также мелкие детали, которые обычно не показывают на фото. Мы уверены, что это идеальный вариант для нас и хотим увидеть виллу вживую.”</p>
-        <strong>— Ирина и Сергей</strong>
-      </div>
-      <div class="review-card">
-        <p>“Wideo było tak ekscytujące i szczegółowe, że po jego obejrzeniu od razu chcieliśmy przyjechać na osobisty pokaz. Wszystko zostało przedstawione w najlepszym możliwym świetle i to pomogło nam podjąć decyzję!”</p>
-        <strong>— Elżbieta i Paweł</strong>
-      </div>
+      <!-- Placeholder for reviews -->
     </div>
   </div>
 
@@ -306,8 +285,14 @@
     font-family: 'Segoe UI', cursive;
     color: #003366;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: calc(33.33% - 20px); /* Ensures 3 cards per row */
+    width: 100%; /* 1 card per row */
     transition: transform 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .review-card {
+      width: 100%; /* Ensures 1 card per row on desktop as well */
+    }
   }
 
   @media (max-width: 768px) {
@@ -316,63 +301,39 @@
     }
   }
 
-  @media (min-width: 768px) {
-    #reviewsContainer {
-      width: 100%;
-    }
-    .review-slider {
-      display: flex;
-      gap: 20px;
-    }
+  /* Optional: Style for the buttons */
+  .review-form input, .review-form textarea {
+    width: 100%; /* Full width */
   }
 </style>
 
-<!-- Script to handle auto-sliding and navigation -->
+<!-- Script to handle auto-sliding, navigation, and saving reviews -->
 <script>
   let currentReviewIndex = 0;
-  const reviews = document.querySelectorAll('.review-card');
-  const totalReviews = reviews.length;
+  const reviewsContainer = document.querySelector('.review-slider');
+  const reviewForm = document.getElementById("reviewForm");
 
-  // Function to move to next review
-  function nextReview() {
-    currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
-    updateReviewSlider();
+  // Load reviews from localStorage
+  function loadReviews() {
+    const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    storedReviews.forEach(review => {
+      const reviewCard = document.createElement("div");
+      reviewCard.classList.add("review-card");
+      reviewCard.innerHTML = `<p>“${review.message}”</p><strong>— ${review.name}</strong>`;
+      reviewsContainer.appendChild(reviewCard);
+    });
   }
 
-  // Function to move to previous review
-  function prevReview() {
-    currentReviewIndex = (currentReviewIndex - 1 + totalReviews) % totalReviews;
-    updateReviewSlider();
-  }
+  // Function to add new review
+  function addReview(name, message) {
+    const newReview = { name, message };
+    const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    storedReviews.push(newReview);
+    localStorage.setItem("reviews", JSON.stringify(storedReviews));
 
-  // Update the position of reviews in slider
-  function updateReviewSlider() {
-    const slider = document.querySelector('.review-slider');
-    slider.style.transform = `translateX(-${currentReviewIndex * (100 / 3)}%)`;
-  }
-
-  // Adding event listeners for navigation arrows
-  document.getElementById("nextReview").addEventListener("click", nextReview);
-  document.getElementById("prevReview").addEventListener("click", prevReview);
-
-  // Auto sliding of reviews
-  setInterval(nextReview, 5000);  // Change review every 5 seconds
-
-  // Add new review functionality
-  document.getElementById("reviewForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const name = document.getElementById("reviewName").value.trim();
-    const message = document.getElementById("reviewText").value.trim();
-
-    if (name && message) {
-      const newReview = document.createElement("div");
-      newReview.classList.add("review-card");
-      newReview.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
-      document.querySelector('.review-slider').appendChild(newReview); // Append new review at the end
-      document.getElementById("reviewForm").reset();
-    }
-  });
-</script>
+    // Add review to the slider
+    const reviewCard = document.createElement("div");
+    reviewCard.classList.add("review-card");
   
 </body>
 </html>
