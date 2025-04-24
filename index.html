@@ -255,7 +255,7 @@
   <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
     <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%; will-change: transform;">
       
-      <!-- Initial review cards -->
+      <!-- Review cards -->
       <div class="review-card">
         <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
         <strong>— Emily & John</strong>
@@ -368,7 +368,7 @@
       const newReview = document.createElement("div");
       newReview.classList.add("review-card");
       newReview.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
-      document.querySelector('.review-slider').insertBefore(newReview, document.querySelector('.review-slider').firstChild);
+      document.querySelector('.review-slider').appendChild(newReview); // Append new review at the end
       document.getElementById("reviewForm").reset();
     }
   });
