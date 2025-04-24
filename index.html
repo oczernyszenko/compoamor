@@ -242,35 +242,249 @@
     }
   </script>
 
-let swiper;
+<section class="reviews-block">
+  <!-- Client Testimonials Section -->
+  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px; color: #7c6846;">What Our Guests Say</h2>
 
-document.addEventListener("DOMContentLoaded", () => {
-  swiper = new Swiper(".mySwiper", {
-    init: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 5,
-    spaceBetween: 20,
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      0: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 5 }
-    },
-    on: {
-      init: function () {
-        renderReviews(this);
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    .review-form {
+      margin: 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: #fdf6e3;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid #f0e2c3;
+    }
+
+    .review-form input,
+    .review-form textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #e0d3af;
+      font-size: 1rem;
+      background: #fffdf6;
+    }
+
+    .review-form button {
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      background-color: #f4b400;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .review-form button:hover {
+      background-color: #e49f00;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 8px;
+      font-size: 1.5rem;
+      justify-content: center;
+      cursor: pointer;
+      color: #d8c49b;
+    }
+
+    .star-rating .active {
+      color: red;
+    }
+
+    .review-card {
+      background: #fff8e1;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #f0e0c0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .swiper-slide-visible .review-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .review-text {
+      font-style: italic;
+      font-family: 'Georgia', cursive;
+      color: #4a90a4;
+      margin-bottom: 10px;
+    }
+
+    .review-author {
+      font-weight: bold;
+      color: #7c6846;
+      text-align: right;
+    }
+
+    .review-stars {
+      margin-top: 10px;
+      color: #f4b400;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .swiper {
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 767px) {
+      .review-form {
+        padding: 15px;
+      }
+      .review-form input,
+      .review-form textarea {
+        font-size: 0.95rem;
+      }
+      .review-form button {
+        font-size: 1rem;
+      }
+      .review-text {
+        font-size: 1rem;
+      }
+      .review-author {
+        font-size: 0.95rem;
       }
     }
-  });
-});
-  
+  </style>
+
+  <!-- Review Slider -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper" id="reviewSlides"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!-- Add Review Form -->
+  <form class="review-form" onsubmit="addReview(event)">
+    <input type="text" id="reviewAuthor" placeholder="Your name" required />
+
+    <div id="starRating" class="star-rating">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+
+    <textarea id="reviewText" rows="3" placeholder="Your review" required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const defaultReviews = [
+      { name: "Emily & John", message: "The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.", rating: 5 },
+      { name: "Thomas und Sophie", message: "Wirklich großartige Video-Präsentation! Die Villa sieht auf dem Bildschirm unglaublich aus, aber als wir ankamen, waren die Eindrücke noch stärker. Wir sind absolut sicher in unserer Wahl!", rating: 5 },
+      { name: "Jonathan", message: "After watching the video showing the entire villa, its terrace, pool, and sea views, I knew this was the house I dreamed of. I can't wait for the personal showing!", rating: 5 },
+      { name: "Ирина и Сергей", message: "В видео всё было показано так реалистично и детально! Нам понравилась съемка интерьера, а также мелкие детали, которые обычно не показывают на фото.", rating: 5 },
+      { name: "Elżbieta i Paweł", message: "Wideo było tak ekscytujące i szczegółowe, że po jego obejrzeniu od razu chcieliśmy przyjechać na osobisty pokaz.", rating: 5 }
+    ];
+
+    function getReviews() {
+      const saved = localStorage.getItem('reviews');
+      return saved ? JSON.parse(saved) : defaultReviews;
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
+
+    function renderReviews(swiper) {
+      const slides = document.getElementById('reviewSlides');
+      slides.innerHTML = '';
+      const reviews = getReviews();
+      reviews.forEach(review => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
+          <div class="review-card">
+            <div class="review-text">"${review.message}"</div>
+            <div class="review-author">— ${review.name}</div>
+            <div class="review-stars">${'★'.repeat(review.rating || 0)}${'☆'.repeat(5 - (review.rating || 0))}</div>
+          </div>
+        `;
+        slides.appendChild(slide);
+      });
+      setTimeout(() => swiper.update(), 100);
+    }
+
+    let selectedRating = 0;
+    document.querySelectorAll('#starRating span').forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.value;
+        document.querySelectorAll('#starRating span').forEach(s => {
+          s.classList.toggle('active', +s.dataset.value <= selectedRating);
+        });
+      });
+    });
+
+    function addReview(e) {
+      e.preventDefault();
+      const text = document.getElementById('reviewText').value.trim();
+      const author = document.getElementById('reviewAuthor').value.trim();
+      if (!text || !author || selectedRating === 0) return;
+
+      const reviews = getReviews();
+      reviews.unshift({ message: text, name: author, rating: selectedRating });
+      saveReviews(reviews);
+      renderReviews(swiper);
+      e.target.reset();
+      selectedRating = 0;
+      document.querySelectorAll('#starRating span').forEach(s => s.classList.remove('active'));
+    }
+
+    let swiper;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      swiper = new Swiper(".mySwiper", {
+        init: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 5,
+        spaceBetween: 20,
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          0: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 5 }
+        },
+        on: {
+          init: function () {
+            renderReviews(this);
+          }
+        }
+      });
+    });
+  </script>
+</section>
 </body>
 </html>
 
