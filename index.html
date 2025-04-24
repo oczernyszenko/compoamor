@@ -300,7 +300,7 @@
     }
 
     .star-rating .active {
-      color: #f4b400;
+      color: red;
     }
 
     .review-card {
@@ -394,7 +394,13 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    const defaultReviews = [...];
+    const defaultReviews = [
+  { name: "Emily & John", message: "The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.", rating: 5 },
+  { name: "Thomas und Sophie", message: "Wirklich großartige Video-Präsentation! Die Villa sieht auf dem Bildschirm unglaublich aus, aber als wir ankamen, waren die Eindrücke noch stärker. Wir sind absolut sicher in unserer Wahl!", rating: 5 },
+  { name: "Jonathan", message: "After watching the video showing the entire villa, its terrace, pool, and sea views, I knew this was the house I dreamed of. I can't wait for the personal showing!", rating: 5 },
+  { name: "Ирина и Сергей", message: "В видео всё было показано так реалистично и детально! Нам понравилась съемка интерьера, а также мелкие детали, которые обычно не показывают на фото.", rating: 5 },
+  { name: "Elżbieta i Paweł", message: "Wideo było tak ekscytujące i szczegółowe, że po jego obejrzeniu od razu chcieliśmy przyjechać na osobisty pokaz.", rating: 5 }
+];
     function getReviews() {
       const saved = localStorage.getItem('reviews');
       return saved ? JSON.parse(saved) : defaultReviews;
@@ -449,22 +455,24 @@
     }
 
     const swiper = new Swiper(".mySwiper", {
-      slidesPerView: 3,
-      spaceBetween: 20,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
-    });
+  slidesPerView: 5,
+  spaceBetween: 20,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 5 }
+  }
+});
 
     renderReviews(swiper);
   </script>
-</section>  
+</section>
+  
 </body>
 </html>
 
