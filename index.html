@@ -385,134 +385,41 @@
 </section>
 <!-- END: REVIEWS SECTION -->
 
-<script>
-  // Translate function
-  const translations = {
-    en: {
-      "reviews-title": "What Our Guests Say",
-      "review-name": "Your Name",
-      "review-text": "Your Review",
-      "review-button": "Submit Review"
-    },
-    es: {
-      "reviews-title": "Lo que dicen nuestros huéspedes",
-      "review-name": "Tu nombre",
-      "review-text": "Tu reseña",
-      "review-button": "Enviar reseña"
-    },
-    ua: {
-      "reviews-title": "Що кажуть наші гості",
-      "review-name": "Ваше ім’я",
-      "review-text": "Ваш відгук",
-      "review-button": "Надіслати відгук"
-    }
-  };
+<section id="reviews" class="review-section">
+  <h2>What Our Guests Say</h2>
+  <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
+    <div class="review-slider">
+      <!-- Example reviews -->
+      <div class="review-card">
+        <p>“The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations.”</p>
+        <strong>— Emily & John</strong>
+      </div>
+      <div class="review-card">
+        <p>“Wirklich großartige Video-Präsentation! Die Villa sieht auf dem Bildschirm unglaublich aus, aber als wir ankamen, waren die Eindrücke noch stärker. Wir sind absolut sicher in unserer Wahl!”</p>
+        <strong>— Thomas und Sophie</strong>
+      </div>
+      <div class="review-card">
+        <p>“After watching the video showing the entire villa, its terrace, pool, and sea views, I knew this was the house I dreamed of. I can't wait for the personal showing!”</p>
+        <strong>— Jonathan</strong>
+      </div>
+      <div class="review-card">
+        <p>“В видео всё было показано так реалистично и детально! Нам понравилась съемка интерьера, а также мелкие детали, которые обычно не показывают на фото. Мы уверены, что это идеальный вариант для нас и хотим увидеть виллу вживую.”</p>
+        <strong>— Ирина и Сергей</strong>
+      </div>
+      <div class="review-card">
+        <p>“Wideo było tak ekscytujące i szczegółowe, że po jego obejrzeniu od razu chcieliśmy przyjechać na osobisty pokaz. Wszystko zostało przedstawione w najlepszym możliwym świetle i to pomogło nam podjąć decyzję!”</p>
+        <strong>— Elżbieta i Paweł</strong>
+      </div>
+    </div>
+  </div>
 
-  function changeLanguage(lang) {
-    document.querySelector(".review-section h2").textContent = translations[lang]["reviews-title"];
-    document.getElementById("reviewName").placeholder = translations[lang]["review-name"];
-    document.getElementById("reviewText").placeholder = translations[lang]["review-text"];
-    document.querySelector("#reviewForm button").textContent = translations[lang]["review-button"];
-  }
-
-  let currentReviewIndex = 0;
-  let autoSlide;
-
-  // Start auto slide function
-  function startAutoSlide() {
-    autoSlide = setInterval(() => {
-      const slider = document.querySelector('.review-slider');
-      const total = slider.children.length;
-      if (total > 1) {
-        currentReviewIndex = (currentReviewIndex + 1) % total;
-        slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-      }
-    }, 6000);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(autoSlide);
-  }
-
-  startAutoSlide();
-
-  const reviewsContainer = document.getElementById("reviewsContainer");
-  reviewsContainer.addEventListener("mouseenter", stopAutoSlide);
-  reviewsContainer.addEventListener("mouseleave", startAutoSlide);
-
-  document.getElementById("prevReview").addEventListener("click", () => {
-    const slider = document.querySelector('.review-slider');
-    const total = slider.children.length;
-    currentReviewIndex = (currentReviewIndex - 1 + total) % total;
-    slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-    updateIndicators();
-  });
-
-  document.getElementById("nextReview").addEventListener("click", () => {
-    const slider = document.querySelector('.review-slider');
-    const total = slider.children.length;
-    currentReviewIndex = (currentReviewIndex + 1) % total;
-    slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-    updateIndicators();
-  });
-
-  document.getElementById("reviewForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const name = document.getElementById("reviewName").value.trim();
-    const email = document.getElementById("reviewEmail").value.trim();
-    const message = document.getElementById("reviewText").value.trim();
-
-    if (!name || !email || !message) return alert("Please fill in all fields.");
-
-    // SEND TO EMAIL via Google Apps Script
-    fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, message })
-    });
-
-    const slider = document.querySelector('.review-slider');
-    const wrapper = document.createElement("div");
-    wrapper.className = "review-card";
-    wrapper.style.flex = "0 0 100%";
-    wrapper.style.minWidth = "100%";
-    wrapper.style.boxSizing = "border-box";
-    wrapper.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
-    slider.appendChild(wrapper);
-
-    document.getElementById("reviewForm").reset();
-    updateIndicators();
-    alert("Thank you for your review!");
-  });
-
-  function updateIndicators() {
-    const slider = document.querySelector('.review-slider');
-    const indicators = document.getElementById('reviewIndicators');
-    indicators.innerHTML = '';
-    [...slider.children].forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.style.width = '10px';
-      dot.style.height = '10px';
-      dot.style.borderRadius = '50%';
-      dot.style.background = index === currentReviewIndex ? '#ffc107' : '#ccc';
-      dot.style.display = 'inline-block';
-      dot.style.transition = 'background 0.3s ease';
-      dot.addEventListener('click', () => slideTo(index));
-      indicators.appendChild(dot);
-    });
-  }
-
-  function slideTo(index) {
-    const slider = document.querySelector('.review-slider');
-    currentReviewIndex = index;
-    slider.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-    updateIndicators();
-  }
-
-  setInterval(updateIndicators, 6000);
-  updateIndicators();
-</script>
+  <form id="reviewForm" class="review-form">
+    <input type="text" id="reviewName" placeholder="Your Name" required>
+    <input type="email" id="reviewEmail" placeholder="Your Email" required>
+    <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required></textarea>
+    <button type="submit">Send Request</button>
+  </form>
+</section>
 
 </body>
 </html>
