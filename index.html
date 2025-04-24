@@ -242,73 +242,7 @@
     }
   </script>
 
-<section id="reviews" class="review-section" style="background-color: #fff9d6; padding: 40px 20px; border-radius: 12px;">
-  <h2>What Our Guests Say</h2>
-  
-  <!-- Navigation arrows -->
-  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <button id="prevReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">←</button>
-    <button id="nextReview" style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; color:#003366;">→</button>
-  </div>
-
-  <!-- Reviews container -->
-  <div id="reviewsContainer" style="overflow: hidden; position: relative; height: auto;">
-    <div class="review-slider" style="display: flex; transition: transform 0.5s ease; width: 100%; will-change: transform;">
-      <!-- Review cards (Will be dynamically added by JS) -->
-    </div>
-  </div>
-
-  <!-- Form to submit a review -->
-  <form id="reviewForm" class="review-form" style="margin-top: 20px;">
-    <input type="text" id="reviewName" placeholder="Your Name" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;">
-    <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea>
-    <button type="submit" style="background-color: #ffc107; color: #003366; font-weight: bold; font-size: 1rem; padding: 14px 28px; border: none; border-radius: 30px; cursor: pointer;">Add Review</button>
-  </form>
-</section>
-
-<!-- Styles for the reviews and responsiveness -->
-<style>
-  .review-slider {
-    display: flex;
-    overflow: hidden;
-    gap: 20px;
-    transition: transform 0.5s ease;
-  }
-
-  .review-card {
-    background: #fff9d6;
-    border-left: 4px solid #ffc107;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 10px;
-    font-style: italic;
-    font-family: 'Segoe UI', cursive;
-    color: #003366;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 100%; /* 1 card per row */
-    transition: transform 0.3s ease;
-  }
-
-  @media (max-width: 768px) {
-    .review-card {
-      width: 100%; /* 1 card per row on mobile */
-    }
-  }
-
-  @media (min-width: 768px) {
-    .review-card {
-      width: calc(33.33% - 20px); /* 3 cards per row on desktop */
-    }
-  }
-</style>
-
-<!-- Script to handle auto-sliding, navigation, and saving reviews -->
-<script>
-  let currentReviewIndex = 0;
-  const reviewsContainer = document.querySelector('.review-slider');
-  const reviewForm = document.getElementById("reviewForm");
-
-  // Reviews data (including 5 sample reviews)
+// Reviews data (including 5 sample reviews)
   const reviews = [
     { name: "Emily & John", message: "The villa is stunning! The view, the design, the atmosphere — everything exceeded our expectations." },
     { name: "Thomas und Sophie", message: "Wirklich großartige Video-Präsentation! Die Villa sieht auf dem Bildschirm unglaublich aus, aber als wir ankamen, waren die Eindrücke noch stärker. Wir sind absolut sicher in unserer Wahl!" },
@@ -316,73 +250,7 @@
     { name: "Ирина и Сергей", message: "В видео всё было показано так реалистично и детально! Нам понравилась съемка интерьера, а также мелкие детали, которые обычно не показывают на фото. Мы уверены, что это идеальный вариант для нас и хотим увидеть виллу вживую." },
     { name: "Elżbieta i Paweł", message: "Wideo było tak ekscytujące i szczegółowe, że po jego obejrzeniu od razu chcieliśmy przyjechać na osobisty pokaz. Wszystko zostało przedstawione w najlepszym możliwym świetle i to pomogło nam podjąć decyzję!" }
   ];
-
-  // Load reviews dynamically
-  function loadReviews() {
-    reviews.forEach(review => {
-      const reviewCard = document.createElement("div");
-      reviewCard.classList.add("review-card");
-      reviewCard.innerHTML = `<p>“${review.message}”</p><strong>— ${review.name}</strong>`;
-      reviewsContainer.appendChild(reviewCard);
-    });
-  }
-
-  // Function to move to next review
-  function nextReview() {
-    currentReviewIndex = (currentReviewIndex + 1) % reviewsContainer.children.length;
-    updateReviewSlider();
-  }
-
-  // Function to move to previous review
-  function prevReview() {
-    currentReviewIndex = (currentReviewIndex - 1 + reviewsContainer.children.length) % reviewsContainer.children.length;
-    updateReviewSlider();
-  }
-
-  // Update the position of reviews in slider
-  function updateReviewSlider() {
-    reviewsContainer.style.transform = `translateX(-${currentReviewIndex * 100}%)`;
-  }
-
-  // Add event listeners for navigation arrows
-  document.getElementById("nextReview").addEventListener("click", nextReview);
-  document.getElementById("prevReview").addEventListener("click", prevReview);
-
-  // Auto sliding of reviews
-  setInterval(nextReview, 5000);  // Change review every 5 seconds
-
-  // Handle form submission
-  reviewForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const name = document.getElementById("reviewName").value.trim();
-    const message = document.getElementById("reviewText").value.trim();
-
-    if (name && message) {
-      // Add new review to the slider
-      const reviewCard = document.createElement("div");
-      reviewCard.classList.add("review-card");
-      reviewCard.innerHTML = `<p>“${message}”</p><strong>— ${name}</strong>`;
-      reviewsContainer.appendChild(reviewCard);
-
-      // Add new review to the reviews array and save to local storage
-      reviews.push({ name, message });
-      localStorage.setItem("reviews", JSON.stringify(reviews));
-
-      document.getElementById("reviewForm").reset();
-    }
-  });
-
-  // Load stored reviews from localStorage when page loads
-  window.onload = function() {
-    const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    storedReviews.forEach(review => {
-      const reviewCard = document.createElement("div");
-      reviewCard.classList.add("review-card");
-      reviewCard.innerHTML = `<p>“${review.message}”</p><strong>— ${review.name}</strong>`;
-      reviewsContainer.appendChild(reviewCard);
-    };
-  };
-</script>
+  
   
 </body>
 </html>
