@@ -279,10 +279,9 @@
     </div>
   </div>
 
-  <!-- Form to submit review -->
+  <!-- Google login form for adding reviews -->
   <form id="reviewForm" class="review-form">
     <input type="text" id="reviewName" placeholder="Your Name" required>
-    <input type="email" id="reviewEmail" placeholder="Your Email" required>
     <textarea id="reviewText" placeholder="Your Review or Question" rows="4" required></textarea>
     <button type="submit">Send Request</button>
   </form>
@@ -307,13 +306,13 @@
     font-family: 'Segoe UI', cursive;
     color: #003366;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: calc(33.33% - 20px);
+    width: calc(33.33% - 20px); /* Ensures 3 cards per row */
     transition: transform 0.3s ease;
   }
 
   @media (max-width: 768px) {
     .review-card {
-      width: 100%;
+      width: 100%; /* 1 card per row on mobile */
     }
   }
 
