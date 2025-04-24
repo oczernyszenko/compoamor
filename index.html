@@ -243,10 +243,10 @@
   </script>
 
 <section class="reviews-block">
-  <!-- Блок отзывов / Reviews Section -->
-  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px; color: #7c6846;">Отзывы наших гостей</h2>
+  <!-- Client Testimonials Section -->
+  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px; color: #7c6846;">What Our Guests Say</h2>
 
-  <!-- Подключение Swiper CSS -->
+  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
@@ -313,11 +313,20 @@
       flex-direction: column;
       justify-content: space-between;
       border: 1px solid #f0e0c0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .swiper-slide-visible .review-card {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .review-text {
       font-style: italic;
-      color: #5a4a2f;
+      font-family: 'Georgia', cursive;
+      color: #4a90a4;
       margin-bottom: 10px;
     }
 
@@ -337,18 +346,37 @@
     .swiper {
       padding-bottom: 40px;
     }
+
+    @media (max-width: 767px) {
+      .review-form {
+        padding: 15px;
+      }
+      .review-form input,
+      .review-form textarea {
+        font-size: 0.95rem;
+      }
+      .review-form button {
+        font-size: 1rem;
+      }
+      .review-text {
+        font-size: 1rem;
+      }
+      .review-author {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 
-  <!-- Слайдер отзывов -->
+  <!-- Review Slider -->
   <div class="swiper mySwiper">
     <div class="swiper-wrapper" id="reviewSlides"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
 
-  <!-- Форма добавления отзыва -->
+  <!-- Add Review Form -->
   <form class="review-form" onsubmit="addReview(event)">
-    <input type="text" id="reviewAuthor" placeholder="Ваше имя" required />
+    <input type="text" id="reviewAuthor" placeholder="Your name" required />
 
     <div id="starRating" class="star-rating">
       <span data-value="1">★</span>
@@ -358,20 +386,85 @@
       <span data-value="5">★</span>
     </div>
 
-    <textarea id="reviewText" rows="3" placeholder="Ваш отзыв" required></textarea>
-    <button type="submit">Оставить отзыв</button>
+    <textarea id="reviewText" rows="3" placeholder="Your review" required></textarea>
+    <button type="submit">Submit Review</button>
   </form>
 
-  <!-- Подключение Swiper JS -->
+  <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    const defaultReviews = [...]; // (оставляем как было)
-    // ...весь остальной JS код без изменений
+    const defaultReviews = [...];
+    function getReviews() {
+      const saved = localStorage.getItem('reviews');
+      return saved ? JSON.parse(saved) : defaultReviews;
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
+
+    function renderReviews(swiper) {
+      const slides = document.getElementById('reviewSlides');
+      slides.innerHTML = '';
+      const reviews = getReviews();
+      reviews.forEach(review => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
+          <div class="review-card">
+            <div class="review-text">"${review.message}"</div>
+            <div class="review-author">— ${review.name}</div>
+            <div class="review-stars">${'★'.repeat(review.rating || 0)}${'☆'.repeat(5 - (review.rating || 0))}</div>
+          </div>
+        `;
+        slides.appendChild(slide);
+      });
+      swiper.update();
+    }
+
+    let selectedRating = 0;
+    document.querySelectorAll('#starRating span').forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.value;
+        document.querySelectorAll('#starRating span').forEach(s => {
+          s.classList.toggle('active', +s.dataset.value <= selectedRating);
+        });
+      });
+    });
+
+    function addReview(e) {
+      e.preventDefault();
+      const text = document.getElementById('reviewText').value.trim();
+      const author = document.getElementById('reviewAuthor').value.trim();
+      if (!text || !author || selectedRating === 0) return;
+
+      const reviews = getReviews();
+      reviews.unshift({ message: text, name: author, rating: selectedRating });
+      saveReviews(reviews);
+      renderReviews(swiper);
+      e.target.reset();
+      selectedRating = 0;
+      document.querySelectorAll('#starRating span').forEach(s => s.classList.remove('active'));
+    }
+
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    renderReviews(swiper);
   </script>
-</section>
-  
-  
+</section>  
 </body>
 </html>
 
