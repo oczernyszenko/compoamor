@@ -252,13 +252,13 @@
       "building-area": "🏠 Building Area: 320 m²",
       "living-area": "🏢 Living Area: 200 m²",
       "sea-view": "🌊 Sea View",
-      description: 🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
+      description: `🌟 <strong>Villa where dreams come true — Campoamor, Costa Blanca</strong><br><br>
       Welcome to Campoamor — a paradise corner on the Costa Blanca, where the Mediterranean Sea meets architecture filled with light, elegance, and soul.<br><br>
       This unique villa is created for those who appreciate aesthetics, harmony, and comfort. On a 500 m² plot with 320 m² of construction and a living area of 200 m², this residence is bathed in natural light and designed with taste.<br><br>
       Every window opens up to the sea, turning the interior into an open, flowing space ideal for relaxation, celebration, or contemplation.<br><br>
       The house features four en-suite bedrooms, each with its own private bathroom equipped with designer sanitary ware. The interiors stand out with a light palette, white walls, marble, natural materials, large panoramic windows, and designer furniture. Everything exudes lightness, sophistication, and serenity.<br><br>
       A fountain pool, terraces with panoramic sea views, a lounge area, glass stairs as an art object, a smart home system with atmospheric lighting, spacious built-in wardrobes, a barbecue area, and a separate laundry room — every detail is thoughtfully designed for an exceptional level of living.<br><br>
-      An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.
+      An architectural gem in one of the most prestigious areas of the Spanish coastline. The perfect choice for those looking for not just a home, but a lifestyle.`
     },
     es: {
       title: "Villa de lujo con vistas al mar en Campoamor",
@@ -269,13 +269,13 @@
       "building-area": "🏠 Área construida: 320 m²",
       "living-area": "🏢 Área habitable: 200 m²",
       "sea-view": "🌊 Vistas al mar",
-      description: 🌟 <strong>Villa donde los sueños se hacen realidad — Campoamor, Costa Blanca</strong><br><br>
+      description: `🌟 <strong>Villa donde los sueños se hacen realidad — Campoamor, Costa Blanca</strong><br><br>
       Bienvenidos a Campoamor — un rincón paradisíaco en la Costa Blanca, donde el mar Mediterráneo se encuentra con la arquitectura llena de luz, elegancia y alma.<br><br>
       Esta villa única está creada para quienes aprecian la estética, la armonía y el confort. En una parcela de 500 m² con 320 m² de construcción y 200 m² de superficie habitable, la residencia está bañada de luz natural y diseñada con buen gusto.<br><br>
       Cada ventana se abre al mar, transformando el interior en un espacio abierto y fluido, ideal para relajarse, celebrar o contemplar.<br><br>
       La casa cuenta con cuatro dormitorios en suite, cada uno con su propio baño privado equipado con sanitarios de diseño. Los interiores destacan por su paleta clara, paredes blancas, mármol, materiales naturales, grandes ventanales panorámicos y muebles de diseño. Todo irradia ligereza, sofisticación y serenidad.<br><br>
       Una piscina con fuente, terrazas con vistas panorámicas al mar, zona de descanso, escaleras de cristal como objeto artístico, sistema de casa inteligente con iluminación ambiental, amplios armarios empotrados, zona de barbacoa y lavandería independiente — cada detalle está cuidadosamente pensado para un nivel de vida excepcional.<br><br>
-      Una joya arquitectónica en una de las zonas más prestigiosas de la costa española. La elección perfecta para quienes buscan no solo un hogar, sino un estilo de vida.
+      Una joya arquitectónica en una de las zonas más prestigiosas de la costa española. La elección perfecta para quienes buscan no solo un hogar, sino un estilo de vida.`
     },
     ua: {
       title: "Розкішна вілла з видом на море в Кампоаморі",
@@ -539,13 +539,13 @@
       reviews.forEach(review => {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
-        slide.innerHTML = 
+        slide.innerHTML = `
           <div class="review-card">
             <div class="review-text">"${review.message}"</div>
             <div class="review-author">— ${review.name}</div>
             <div class="review-stars">${'★'.repeat(review.rating || 0)}${'☆'.repeat(5 - (review.rating || 0))}</div>
           </div>
-        ;
+        `;
         slides.appendChild(slide);
       });
       if (window.swiper) swiper.update();
@@ -602,5 +602,6 @@
     });
   </script>
 </section>
+  
 </body>
 </html>
